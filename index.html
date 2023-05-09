@@ -1,0 +1,434 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Forward の Blog</title><meta name="author" content="Forward"><meta name="copyright" content="Forward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录一些知识点🥝"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fsllala.top/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://vercel.fsllala.top/css/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Forward の Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-05-09 20:12:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/onePic.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/wind.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/cursor.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="/css/txMap.css"><link rel="stylesheet" href="/css/avator.css"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Forward の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Forward の Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/articles/3ef665a6.html" title="https"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="https"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/3ef665a6.html" title="https">https</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JS/">JS</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/JS/https/">https</a></span></div><div class="content">调研背景
+公司项目打算采用HTTPS来保证数据的安全性。在计划零成本的前提下，看是否可以实现HTTPS。
+
+HTTP与HTTPS区别
+数据加密：HTTPS 使用 SSL&#x2F;TLS 协议对传输数据进行加密，使得第三方无法窃取数据内容。HTTP 传输的数据是明文，容易被黑客窃取和篡改。
+数据完整性：在数据传输过程中，HTTPS 使用消息认证码（MAC）校验数据完整性，如果数据被篡改或者损坏，在传输过程中会被损坏。
+身份验证：HTTPS 使用证书机制来验证网络通信的双方身份，加强了验证的强度和客户端和服务器之间的信任。HTTP 没有身份验证机制，容易遭受中间人攻击。
+
+
+HTTPS 并不是一种新的协议，我们可以理解为HTTPS协议 &#x3D; HTTP协议 + SSL&#x2F;TLS协议。通常来说，HTTP 是直接和 TCP 进行通信的。当我们使用  SSL&#x2F;TLS 时，会变成先和  SSL&#x2F;TLS 通信，然后再由  SSL&#x2F;TLS 和 TCP 进行通信。
+
+
+SSL&#x2F;TLS
+SSL（Secure Sockets Layer）和 TLS（T ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/articles/7067fd0d.html" title="TypeScript"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_16.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/7067fd0d.html" title="TypeScript">TypeScript</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-01-29T10:16:13.000Z" title="发表于 2023-01-29 18:16:13">2023-01-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/TypeScript/">TypeScript</a></span></div><div class="content">TypeScript是什么
+TS是JS的超集，所以JS基础的类型都包含在内
+
+TypeScript开发环境搭建
+全局安装typescript：
+
+1npm install typescript -g
+
+
+查看typescript当前版本号：
+
+1tsc -v
+
+
+将TS编译成JS( TS 不能直接在浏览器执行，需要编译器将TS转为JS)
+
+1tsc xxx.ts
+
+基础数据类型
+基础类型：Number、String、Boolean、null、undefined以及 ES6 的 Symbol 和 ES10 的 BigInt。
+
+字符串类型12345678let str: string = &quot;这是字符串类型&quot;;//上方我们将str这个变量定义为了string类型，如果对他输入其他类型的内容就会报错，例如：let str1: string = 666;//这个就会报错了，会提示你不能将类型&quot;number&quot;分配给类型&quot;string&quot;let muban: string = `web$&#123;str&#125;`;//我们也可以使用E ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/articles/46635768.html" title="NodeJs连接MySQL"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_10.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs连接MySQL"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/46635768.html" title="NodeJs连接MySQL">NodeJs连接MySQL</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-12-30T07:55:55.000Z" title="发表于 2022-12-30 15:55:55">2022-12-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NodeJs/">NodeJs</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/NodeJs/mysql/">mysql</a></span></div><div class="content">NodeJs连接MySQLmysql与mysql2
+如何可以在Node的代码中执行SQL语句呢?这里我们可以借助于两个库：
+mysql：最早的Node连接MySQL的数据库驱动；
+mysql2：在mysql的基础之上，进行了很多的优化、改进；
+
+
+目前相对来说，更偏向于使用mysql2，mysql2兼容mysql的API，并且提供了一些附加功能；
+更快&#x2F;更好的性能；
+Prepared Statement (预编译语句)：
+提高性能：将创建的语句模块发送给MySQL，然后MySQL编译（解析、优化、转换）语句模块，并且存储它但是不执行，之 后我们在真正执行时会给?提供实际的参数才会执行；就算多次执行，也只会编译一次，所以性能是更高的；
+防止SQL注入：之后传入的值不会像模块引擎那样就编译，那么一些SQL注入的内容不会被执行；or 1 &#x3D; 1不会被执行；
+
+
+支持Promise，所以我们可以使用async和await语法；
+
+
+
+mysql2的使用
+安装mysql2：
+
+12npm init -ynpm install mysql2
+
+
+mysql2的使用过程如下：
+第 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/articles/799084bf.html" title="NodeJs Koa"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Koa"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/799084bf.html" title="NodeJs Koa">NodeJs Koa</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-12-29T03:29:04.000Z" title="发表于 2022-12-29 11:29:04">2022-12-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NodeJs/">NodeJs</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/NodeJs/Koa/">Koa</a></span></div><div class="content">Koa简介
+koa是express同一个团队开发的一个新的Web框架；
+相对于express具有更强的异步处理能力；**(Koa框架的next()函数返回的是一个promise)**
+Koa的核心代码只有1600+行，是一个更加轻量级的框架，我们可以根据需要安装和使用中间件；
+
+使用
+node下载koa模块
+命令：
+初始化服务：npm init -y
+下载koa：npm i express
+
+
+
+koa初体验
+koa并没有像express一样，将req和res分开，而是将它们作为 ctx的属性；
+ctx代表依次请求的上下文对象；
+ctx.request：获取请求对象；
+ctx.response：获取响应对象；
+
+123456789101112131415161718192021// 导出的是个类,所以K大写const  Koa = require(&quot;koa&quot;);// 因为是个类,所以需要实例化const app =new Koa();// koa所有中间件执行完,没有返回结果res.end(),默认返回 NOT FOUND; express则会一直pending;/ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/articles/8ba9ed2d.html" title="NodeJs Express"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_32.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Express"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/8ba9ed2d.html" title="NodeJs Express">NodeJs Express</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-11-29T03:29:04.000Z" title="发表于 2022-11-29 11:29:04">2022-11-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NodeJs/">NodeJs</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/NodeJs/Express/">Express</a></span></div><div class="content">Express简介
+Express 是一个简洁而灵活的 Node.js Web应用框架, 提供一系列强大特性帮助你创建各种Web应用
+Express内部还是使用的http模块实现服务器创建和监听, 对http模块进行了二次封装
+严格上来说  express就是NodeJS的一个模块  直接下载安装
+
+中文官网express中文官网
+使用
+node下载express模块：
+命令  ： 
+初始化服务 ： npm init -y  
+下载express：  npm  i  express
+
+
+使用的时候  引入  需要实例化一个express应用  使用应用对象创建各种服务
+
+express初体验12345678910111213141516171819const express = require(&quot;express&quot;);// express其实是一个函数;// 调用函数返回 app,app本质也是一个函数;const app =express();// 监听默认路径(GET)app.get(&quot;/&quot;,(req,res,next)=&gt;&#123;  ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/articles/4dee6fea.html" title="模块化规范"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_8.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模块化规范"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/4dee6fea.html" title="模块化规范">模块化规范</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-30T07:55:55.000Z" title="发表于 2022-10-30 15:55:55">2022-10-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NodeJs/">NodeJs</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/NodeJs/CommonJs/">CommonJs</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/NodeJs/CommonJs/ES6/">ES6</a></span></div><div class="content">什么是模块化？
+模块化就是把单独的一个功能封装到一个模块（文件）中，模块之间相互隔离，但是可以通过特定的接口公开内部成员，也可以依赖别的模块；
+将一个项目拆分为若干块，每块之间以一定的形式进行通信，而每块内部的内容都是独立的；
+可以理解为一个js文件也就是一个模块；
+
+模块化的好处？
+抽离公共的代码，提高了代码的维护性和复用性；
+隔离作用域，避免变量的冲突；
+将一个复杂的系统分解为多个子模块，便于开发和维护；
+
+常用的模块化规范?CommonJs特点
+CommonJs最大的特点就是同步加载；(缺点)
+每一个文件都是一个Module对象，通过关键字module.exports或者exports来暴露内容，并可以通过require来引入指定模块；
+模块一旦加载一次之后就会被缓存；
+
+工作环境
+服务端；两个原因使CommonJs无法在浏览器端使用：
+
+
+根本原因：CommonJs中使用了Node的api，无法在浏览器中运行。
+直接原因：作为一门同步加载的模块规范必须得在require完全加载好之后才能执行下一步，所以会有阻塞的情况，在网络状态比较差的情况下，就会导致浏览器的假死现象。(对于服 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/articles/7cf6476b.html" title="nvm、npm与nrm"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nvm、npm与nrm"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/7cf6476b.html" title="nvm、npm与nrm">nvm、npm与nrm</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-10-23T07:55:55.000Z" title="发表于 2022-10-23 15:55:55">2022-10-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NodeJs/">NodeJs</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/NodeJs/nvm/">nvm</a></span></div><div class="content">nvmnvm是什么?
+nvm(node.js version manager)即nodejs版本管理器；可以简单操作node版本的切换、安装、查看。。。等等；与npm不同的是，npm是依赖包的管理工具。
+
+为什么需要用nvm?
+node有很多的版本，切记，并不是新版一出现，旧的版本就不去用了；在不同的项目开发过程中，可能需要我们电脑中同时存在多个不同版本的node；这时候就需要一个软件，来更好的管理这些不同版本的node同时存在于我们的电脑中。
+
+nvm的安装
+安装nvm之前先删除现有的node；在控制面板里面删了就行；
+
+nvm下载链接；
+
+安装路径建议不要换，因为用默认的路径环境变量就自动配置好了；即一直Next，啥也不要改；
+
+
+
+通过nvm -v查看是否安装成功了；通过nvm list查看当前电脑上安装了那些版本的node(因为刚才卸载了，所以现在是No installations recognized.)
+
+配置nvm：复制下面代码(配置镜像源)到nvm文件位置(过程3的第一张图)，点开setting.txt
+12node_mirror: https://npm.taobao ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/articles/f7f97ed.html" title="文件下载"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_38.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文件下载"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/f7f97ed.html" title="文件下载">文件下载</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-08-07T08:11:10.000Z" title="发表于 2022-08-07 16:11:10">2022-08-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JS/">JS</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/JS/Blob/">Blob</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/JS/Blob/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/">文件下载</a></span></div><div class="content">文件下载方式
+前端涉及到的文件下载还是很多应用场景的，那么前端文件下载有多少种方式呢？每种方式有什么优缺点呢？下面就来一一介绍。
+
+a标签定义与用法
+首先实现download功能，条件必须满足：所要下载的文件与js或当前页面同源。即window.location.protocol（传输协议）+window.location.host（域名）必须有，且一致；
+如果是本地文件，请启动本地服务，使用localhost访问页面；
+通过a标签的download属性来实现文件下载；download为h5中新增的a标签属性；download+href使a标签具备点击下载功能；
+download属性也可以设置一个值来规定下载文件的名称；若没有设置拓展名，浏览器将自动检测正确的拓展名(.img，.png、.pdf)；
+
+兼容性测试及结果
+代码
+
+1234567891011121314151617&lt;a href=&quot;./imgs/cs.jpg&quot;&gt;同源图片，不带download&lt;/a&gt;&lt;/br&gt;&lt;a href=&quot;./imgs/cs.jpg ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/articles/f6275dee.html" title="JSON.stringify 深拷贝弊端"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_15.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JSON.stringify 深拷贝弊端"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/f6275dee.html" title="JSON.stringify 深拷贝弊端">JSON.stringify 深拷贝弊端</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-06T07:56:21.000Z" title="发表于 2022-06-06 15:56:21">2022-06-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JS/">JS</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/JS/JSON-stringify-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%BC%8A%E7%AB%AF/">JSON.stringify 深拷贝弊端</a></span></div><div class="content">JSON.stringify 深拷贝的弊端时间对象
+如果 obj 里面有时间对象，则 JSON.stringify 后再 JSON.parse 的结果，时间将转为字符串的形式，而不是对象的形式
+
+123456let obj = &#123;    a:123,    b:[new Date(),new Date()]&#125;let newObj = JSON.parse(JSON.stringify(obj));console.log(obj,newObj);
+
+
+RegExp 、Error
+如果 obj 里有 RegExp (正则表达式的缩写)、Error 对象，则序列化的结果将只得到空对象；
+
+1234567let obj = &#123;    a:123,    b:/aabb[a-z]\d/,    c:new Error(&#x27;typeError&#x27;)&#125;let newObj = JSON.parse(JSON.stringify(obj));console.log(obj,newObj);
+
+
+function、undefined、Symbol
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/articles/e98504f5.html" title="深浅拷贝"><img class="post_bg" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_28.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="深浅拷贝"></a></div><div class="recent-post-info"><a class="article-title" href="/articles/e98504f5.html" title="深浅拷贝">深浅拷贝</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-05-02T10:41:49.000Z" title="发表于 2022-05-02 18:41:49">2022-05-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/JS/">JS</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/JS/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/">深浅拷贝</a></span></div><div class="content">对象的引用赋值
+js中一旦遇到引用数据类型，就会开辟一块堆内存，将引用数据类型的值进行储存，并给这块堆内存分配一个16进制地址。
+
+1234const info = &#123;name:&quot;forward&quot;,age:24&#125;;const obj = info;obj.age=23;console.log(info.age);//23
+
+
+浅拷贝
+浅拷贝：将第一层的数据数据完全拷贝过来，如果有引用类型，引用类型指向的是一个16进制地址，也会拷贝过来(即：拷贝的引用类型和原数据指向同一个内存地址)
+(对象)如果属性是基本类型，拷贝的就是基本类型的值；如果属性是引用类型，拷贝的就是内存地址
+(数组)如果数组元素(arr[index])是基本类型，就会拷贝一份，互不影响，而如果是对象或者数组，就会只拷贝对象和数组的引用，这样我们无论在新旧数组进行了修改，两者都会发生变化
+即浅拷贝是拷贝一层，深层次的引用类型则共享内存地址
+常见的浅拷贝：
+Object.assign()
+concat()
+slice() 返回一个新的数组对象；原始数组不会被改变。
+…拓展运算符
+Lod ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="avatar-img"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Forward</div><div class="author-info__description">记录一些知识点🥝</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fsllala"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/3ef665a6.html" title="https"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="https"/></a><div class="content"><a class="title" href="/articles/3ef665a6.html" title="https">https</a><time datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/7067fd0d.html" title="TypeScript"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_16.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript"/></a><div class="content"><a class="title" href="/articles/7067fd0d.html" title="TypeScript">TypeScript</a><time datetime="2023-01-29T10:16:13.000Z" title="发表于 2023-01-29 18:16:13">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/46635768.html" title="NodeJs连接MySQL"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_10.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs连接MySQL"/></a><div class="content"><a class="title" href="/articles/46635768.html" title="NodeJs连接MySQL">NodeJs连接MySQL</a><time datetime="2022-12-30T07:55:55.000Z" title="发表于 2022-12-30 15:55:55">2022-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/799084bf.html" title="NodeJs Koa"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Koa"/></a><div class="content"><a class="title" href="/articles/799084bf.html" title="NodeJs Koa">NodeJs Koa</a><time datetime="2022-12-29T03:29:04.000Z" title="发表于 2022-12-29 11:29:04">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/8ba9ed2d.html" title="NodeJs Express"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_32.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Express"/></a><div class="content"><a class="title" href="/articles/8ba9ed2d.html" title="NodeJs Express">NodeJs Express</a><time datetime="2022-11-29T03:29:04.000Z" title="发表于 2022-11-29 11:29:04">2022-11-29</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a>
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Echarts/"><span class="card-category-list-name">Echarts</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JS/"><span class="card-category-list-name">JS</span><span class="card-category-list-count">18</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JS/Blob/"><span class="card-category-list-name">Blob</span><span class="card-category-list-count">1</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JS/Blob/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/"><span class="card-category-list-name">文件下载</span><span class="card-category-list-count">1</span></a></li></ul></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JS/Dom/"><span class="card-category-list-name">Dom</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JS/EventLoop/"><span class="card-category-list-name">EventLoop</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JS/JSON-stringify-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%BC%8A%E7%AB%AF/"><span class="card-category-list-name">JSON.stringify 深拷贝弊端</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/JS/JS%E7%9B%92%E6%A8%A1%E5%9E%8B/"><span class="card-category-list-name">JS盒模型</span><span class="card-category-list-count">1</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Dom/" style="font-size: 1.15em; color: rgb(25, 43, 111)">Dom</a><a href="/tags/%E5%AE%8F%E4%BB%BB%E5%8A%A1/" style="font-size: 1.15em; color: rgb(149, 196, 95)">宏任务</a><a href="/tags/%E5%BE%AE%E4%BB%BB%E5%8A%A1/" style="font-size: 1.15em; color: rgb(154, 103, 130)">微任务</a><a href="/tags/Echarts/" style="font-size: 1.15em; color: rgb(129, 152, 161)">Echarts</a><a href="/tags/NodeJs/" style="font-size: 1.45em; color: rgb(31, 26, 62)">NodeJs</a><a href="/tags/JS%E7%9B%92%E6%A8%A1%E5%9E%8B/" style="font-size: 1.15em; color: rgb(164, 52, 195)">JS盒模型</a><a href="/tags/mysql/" style="font-size: 1.15em; color: rgb(77, 112, 156)">mysql</a><a href="/tags/PhotoShop/" style="font-size: 1.15em; color: rgb(74, 60, 166)">PhotoShop</a><a href="/tags/Vue3-watch/" style="font-size: 1.15em; color: rgb(39, 196, 0)">Vue3 watch</a><a href="/tags/TypeScript/" style="font-size: 1.15em; color: rgb(100, 158, 164)">TypeScript</a><a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 1.15em; color: rgb(124, 145, 172)">快捷键</a><a href="/tags/Vue2%E4%B8%8E3%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" style="font-size: 1.15em; color: rgb(129, 198, 29)">Vue2与3响应式原理</a><a href="/tags/Vue3/" style="font-size: 1.15em; color: rgb(188, 158, 67)">Vue3</a><a href="/tags/Vue3-Suspense/" style="font-size: 1.15em; color: rgb(103, 29, 5)">Vue3 Suspense</a><a href="/tags/Vue3-hook/" style="font-size: 1.15em; color: rgb(69, 197, 92)">Vue3 hook</a><a href="/tags/Vue3-provide%E4%B8%8Einject/" style="font-size: 1.15em; color: rgb(124, 162, 30)">Vue3 provide与inject</a><a href="/tags/Vue3%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/" style="font-size: 1.15em; color: rgb(124, 58, 176)">Vue3响应式数据</a><a href="/tags/Vue3-setup%E5%8F%82%E6%95%B0/" style="font-size: 1.15em; color: rgb(64, 23, 116)">Vue3 setup参数</a><a href="/tags/JS/" style="font-size: 1.3em; color: rgb(94, 162, 137)">JS</a><a href="/tags/Blob/" style="font-size: 1.15em; color: rgb(155, 144, 164)">Blob</a><a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/" style="font-size: 1.15em; color: rgb(118, 94, 182)">文件下载</a><a href="/tags/NodeJs%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97/" style="font-size: 1.15em; color: rgb(40, 102, 125)">NodeJs内置模块</a><a href="/tags/https/" style="font-size: 1.15em; color: rgb(1, 194, 121)">https</a><a href="/tags/NodeJs%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.15em; color: rgb(65, 22, 107)">NodeJs服务器</a><a href="/tags/NodeJs-Koa/" style="font-size: 1.15em; color: rgb(139, 177, 149)">NodeJs Koa</a><a href="/tags/NodeJs-Express/" style="font-size: 1.3em; color: rgb(187, 46, 167)">NodeJs Express</a><a href="/tags/nvm/" style="font-size: 1.15em; color: rgb(67, 94, 56)">nvm</a><a href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/" style="font-size: 1.15em; color: rgb(77, 77, 162)">深拷贝</a><a href="/tags/websocket/" style="font-size: 1.15em; color: rgb(129, 97, 8)">websocket</a><a href="/tags/%E5%BF%83%E8%B7%B3%E9%87%8D%E8%BF%9E%E6%9C%BA%E5%88%B6/" style="font-size: 1.15em; color: rgb(180, 66, 194)">心跳重连机制</a><a href="/tags/this%E6%8C%87%E5%90%91/" style="font-size: 1.15em; color: rgb(174, 99, 95)">this指向</a><a href="/tags/bat/" style="font-size: 1.15em; color: rgb(191, 187, 113)">bat</a><a href="/tags/vbs/" style="font-size: 1.15em; color: rgb(41, 63, 33)">vbs</a><a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 1.15em; color: rgb(137, 78, 95)">原型</a><a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 1.15em; color: rgb(14, 162, 98)">原型链</a><a href="/tags/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/" style="font-size: 1.15em; color: rgb(138, 181, 89)">图片懒加载</a><a href="/tags/promise/" style="font-size: 1.15em; color: rgb(55, 109, 19)">promise</a><a href="/tags/async-await/" style="font-size: 1.15em; color: rgb(33, 120, 57)">async await</a><a href="/tags/%E6%8B%96%E6%8B%BD/" style="font-size: 1.15em; color: rgb(181, 83, 57)">拖拽</a><a href="/tags/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D/" style="font-size: 1.15em; color: rgb(184, 11, 60)">深浅拷贝</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/01/"><span class="card-archive-list-date">一月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">十二月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">十一月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">十月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">40</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">93.5k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-05-09T12:12:07.689Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Forward</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://vercel.fsllala.top/js/fancybox.umd.min.js"></script><script src="https://file.crazywong.com/npm/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://vercel.fsllala.top/js/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function subtitleType () {
+  getScript('https://yijuzhan.com/api/word.php?m=js').then(() => {
+    const con = str[0]
+    if (true) {
+      const from = '出自 ' + str[1]
+      const sub = []
+      sub.unshift(con, from)
+      window.typed = new Typed('#subtitle', {
+        strings: sub,
+        startDelay: 300,
+        typeSpeed: 150,
+        loop: true,
+        backSpeed: 50,
+      })
+    } else {
+      document.getElementById('subtitle').innerHTML = con
+    }
+  })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div><script src="/js/jquery.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script async data-pjax src="/js/txMap.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://vercel.fsllala.top/js/canvas-nest.min.js"></script><script src="https://vercel.fsllala.top/js/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://vercel.fsllala.top/js/click-heart.min.js" async="async" mobile="false"></script><script src="https://vercel.fsllala.top/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><div id="web_bg"></div>

@@ -1,0 +1,432 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>模块化规范 | Forward の Blog</title><meta name="author" content="Forward"><meta name="copyright" content="Forward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是模块化？ 模块化就是把单独的一个功能封装到一个模块（文件）中，模块之间相互隔离，但是可以通过特定的接口公开内部成员，也可以依赖别的模块； 将一个项目拆分为若干块，每块之间以一定的形式进行通信，而每块内部的内容都是独立的； 可以理解为一个js文件也就是一个模块；  模块化的好处？ 抽离公共的代码"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fsllala.top/articles/4dee6fea"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://vercel.fsllala.top/css/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '模块化规范',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-28 09:46:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/onePic.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/wind.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/cursor.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="/css/txMap.css"><link rel="stylesheet" href="/css/avator.css"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_8.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Forward の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">模块化规范</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-30T07:55:55.000Z" title="发表于 2022-10-30 15:55:55">2022-10-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-28T01:46:55.425Z" title="更新于 2023-02-28 09:46:55">2023-02-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NodeJs/">NodeJs</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NodeJs/CommonJs/">CommonJs</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NodeJs/CommonJs/ES6/">ES6</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="模块化规范"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="什么是模块化？"><a href="#什么是模块化？" class="headerlink" title="什么是模块化？"></a>什么是模块化？</h1><ul>
+<li>模块化就是把单独的一个功能封装到一个模块（文件）中，模块之间相互隔离，但是可以通过特定的接口公开内部成员，也可以依赖别的模块；</li>
+<li>将一个项目拆分为若干块，每块之间以一定的形式进行通信，而每块内部的内容都是独立的；</li>
+<li>可以理解为一个js文件也就是一个模块；</li>
+</ul>
+<h1 id="模块化的好处？"><a href="#模块化的好处？" class="headerlink" title="模块化的好处？"></a>模块化的好处？</h1><ul>
+<li>抽离公共的代码，提高了代码的维护性和复用性；</li>
+<li>隔离作用域，避免变量的冲突；</li>
+<li>将一个复杂的系统分解为多个子模块，便于开发和维护；</li>
+</ul>
+<h1 id="常用的模块化规范"><a href="#常用的模块化规范" class="headerlink" title="常用的模块化规范?"></a>常用的模块化规范?</h1><h2 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs"></a>CommonJs</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>CommonJs最大的特点就是同步加载；(缺点)</li>
+<li>每一个文件都是一个Module对象，通过关键字module.exports或者exports来暴露内容，并可以通过require来引入指定模块；</li>
+<li>模块一旦加载一次之后就会被缓存；</li>
+</ul>
+<h3 id="工作环境"><a href="#工作环境" class="headerlink" title="工作环境"></a>工作环境</h3><blockquote>
+<p>服务端；两个原因使CommonJs无法在浏览器端使用：</p>
+</blockquote>
+<ul>
+<li>根本原因：CommonJs中使用了Node的api，无法在浏览器中运行。</li>
+<li>直接原因：作为一门同步加载的模块规范必须得在require完全加载好之后才能执行下一步，所以会有阻塞的情况，在网络状态比较差的情况下，就会导致浏览器的假死现象。(对于服务端，require的等待时间是硬盘读取时间，而对于浏览器端来说，这取决于网速的快慢。)</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li>使用 <code>exports.x </code>或者<code>module.exports</code>暴露模块；</li>
+<li>通过<code>require</code>来完成对模块的引入；</li>
+<li>一个文件就是一个模块，都拥有独立的作用域；</li>
+</ul>
+<h4 id="使用exports-x暴露；"><a href="#使用exports-x暴露；" class="headerlink" title="使用exports.x暴露；"></a>使用<code>exports.x</code>暴露；</h4><blockquote>
+<p>使用<code>exports.x</code>暴露；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m1.js文件</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">age</span>=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// exports是个对象;给exports对象上面添加属性进行导出;</span></span><br><span class="line"><span class="comment">// exports.x</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">num1</span>=num; <span class="comment">//num1是随便取的;尽量和变量名保持一致</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">sum</span>=sum; </span><br><span class="line"><span class="built_in">exports</span>.<span class="property">Animal</span>=<span class="title class_">Animal</span>; </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>require</code>引入<code>m1.js</code>；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建index.js文件用来引入m1.js</span></span><br><span class="line"><span class="comment">// require函数的返回值是个对象,是exports对象;</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">M1</span> = <span class="built_in">require</span>(<span class="string">&quot;./m1.js&quot;</span>); <span class="comment">//这行代码的本质是  M1=exports;(对象赋值,其实是地址)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M1</span>); <span class="comment">//&#123; num1: 10, sum: [Function: sum], Animal: [class Animal] &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M1</span>.<span class="property">num1</span>); <span class="comment">//10</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M1</span>.<span class="title function_">sum</span>(<span class="number">2</span>,<span class="number">3</span>)); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">DOG</span> = <span class="keyword">new</span> <span class="variable constant_">M1</span>.<span class="title class_">Animal</span>(); <span class="comment">//const声明的常量 建议大写;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">DOG</span>.<span class="property">age</span>) <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用module-exports暴露多个；"><a href="#使用module-exports暴露多个；" class="headerlink" title="使用module.exports暴露多个；"></a>使用<code>module.exports</code>暴露多个；</h4><blockquote>
+<p>使用<code>module.exports</code>暴露；在一个自定义模块中，默认情况下，module.exports&#x3D;{}；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m2.js文件</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">age</span>=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// methods 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// module.exports是个对象;给module.exports对象上面添加属性进行导出;</span></span><br><span class="line"><span class="comment">// module.exports.num=num;</span></span><br><span class="line"><span class="comment">// module.exports.sum=sum;</span></span><br><span class="line"><span class="comment">// module.exports.Animal=Animal;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//methods 2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// module.exports导出方式  es6对象简写形式(上面声明了变量,下面json的键值对名一样,可以简写;(值就是上面的变量))</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    num,</span><br><span class="line">    sum,</span><br><span class="line">    <span class="title class_">Animal</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>require</code>引入<code>m2.js</code>；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两种方式的引入方式都是一样的，都是require(&quot;相对路径&quot;);</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">M2</span> = <span class="built_in">require</span>(<span class="string">&quot;./m2.js&quot;</span>); <span class="comment">//require函数的返回值是个对象,是module.exports对象;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M2</span>); <span class="comment">//&#123; num: 10, sum: [Function: sum], Animal: [class Animal] &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M2</span>.<span class="property">num</span>); <span class="comment">//10</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M2</span>.<span class="title function_">sum</span>(<span class="number">5</span>,<span class="number">3</span>)); <span class="comment">//8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">CAT</span> = <span class="keyword">new</span> <span class="variable constant_">M2</span>.<span class="title class_">Animal</span>(); <span class="comment">//const声明的常量 建议大写;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">CAT</span>.<span class="property">age</span>) <span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用module-exports暴露单个；"><a href="#使用module-exports暴露单个；" class="headerlink" title="使用module.exports暴露单个；"></a>使用<code>module.exports</code>暴露单个；</h4><blockquote>
+<p>使用<code>module.exports</code>暴露；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m2.js文件</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">age</span>=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module.exports是个对象,但是不加属性,直接导出;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=sum;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>require</code>引入<code>m2.js</code>；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">M2</span> = <span class="built_in">require</span>(<span class="string">&quot;./m2.js&quot;</span>); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M2</span>); <span class="comment">//[Function: sum] 这里的M2就是m2.js里导出的东西,就不再是对象了;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(M2.sum(5,3)); // TypeError: M2.sum is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">M2</span>(<span class="number">5</span>,<span class="number">3</span>)); <span class="comment">// 8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="module-exports与exports有什么关系或者区别呢？"><a href="#module-exports与exports有什么关系或者区别呢？" class="headerlink" title="module.exports与exports有什么关系或者区别呢？"></a>module.exports与exports有什么关系或者区别呢？</h4><ul>
+<li>我们追根溯源，通过维基百科中对CommonJS规范的解析：<ul>
+<li>CommonJS中是没有module.exports的概念的；</li>
+<li>但是为了实现模块的导出，Node中使用的是Module的类，每一个模块都是Module的一个实例，也就是<br>module；</li>
+<li>所以在Node中真正用于导出的其实根本不是exports，而是module.exports；</li>
+<li>因为module才是导出的真正实现者；</li>
+</ul>
+</li>
+<li>但是，为什么exports也可以导出呢？<ul>
+<li>这是因为module对象的exports属性是exports对象的一个引用；</li>
+<li>也就是说 module.exports &#x3D; exports &#x3D; index.js中的M2；</li>
+</ul>
+</li>
+</ul>
+<h5 id="module对象"><a href="#module对象" class="headerlink" title="module对象"></a>module对象</h5><blockquote>
+<p>Node中使用的是Module的类，每一个模块都是Module的一个实例，也就是module；</p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/module.png" alt="module"></p>
+<h5 id="module-exports-对象"><a href="#module-exports-对象" class="headerlink" title="module.exports 对象"></a>module.exports 对象</h5><blockquote>
+<p>module.exports&#x3D;xxx的过程其实是引用赋值(浅拷贝)的过程；exports(也是一个对象)之所以可以导出，就是把exports对象的地址赋值给了module.exports，借助module.exports导出；</p>
+</blockquote>
+<ul>
+<li>使用 require() 方法导入模块时，导入的结果，永远以 最下面的module.exports 指向的对象为准；</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m2.js文件</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module.exports是个对象;给module.exports对象上面添加属性进行导出;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">num</span>=num;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">sum</span>=sum;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module.exports开辟了新的引用类型地址;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;开辟新的引用类型地址&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">M2</span> = <span class="built_in">require</span>(<span class="string">&quot;./m2.js&quot;</span>); <span class="comment">//require函数的返回值是个对象,是module.exports对象;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M2</span>); <span class="comment">//&#123; name: &#x27;开辟新的引用类型地址&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上面的module.exports属性要是在下面结果就不一样了;相当于在原来的对象上添加了属性;</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m2.js文件</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module.exports开辟了新的引用类型地址;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;开辟新的引用类型地址&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module.exports是个对象;给上面的那个module.exports对象上面添加属性进行导出;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">num</span>=num;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">sum</span>=sum;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">M2</span> = <span class="built_in">require</span>(<span class="string">&quot;./m2.js&quot;</span>); <span class="comment">//require函数的返回值是个对象,是module.exports对象;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M2</span>); <span class="comment">//&#123; name: &#x27;开辟新的引用类型地址&#x27;, num: 10, sum: [Function: sum] &#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exports与module.exports同时导出</li>
+</ul>
+<blockquote>
+<p>由于真正用于导出的其实根本不是exports，而是module.exports；所以同时导出的时候module.exports开辟了新的内存地址，exports就相当于被架空了;</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m2.js文件</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">a,b</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">num</span>=num;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">sum</span>=sum;</span><br><span class="line"></span><br><span class="line"><span class="built_in">exports</span>=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;开辟新的引用类型地址&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">M2</span> = <span class="built_in">require</span>(<span class="string">&quot;./m2.js&quot;</span>); <span class="comment">//require函数的返回值是个对象,是module.exports对象;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">M2</span>); <span class="comment">//&#123; num: 10, sum: [Function: sum] &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>ES6最大的特点是按需加载；</li>
+</ul>
+<h3 id="工作环境-1"><a href="#工作环境-1" class="headerlink" title="工作环境"></a>工作环境</h3><ul>
+<li>是浏览器端与服务器端通用的模块化开发规范；</li>
+</ul>
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><ul>
+<li>使用 <code>export </code>或者<code>export default</code>暴露模块；</li>
+<li>通过<code>import</code>来完成对模块的引入；</li>
+<li><code>export defalut</code>每个js模块里面只能有一个；<code>export</code>可以有多个；</li>
+</ul>
+<h4 id="使用export直接导出"><a href="#使用export直接导出" class="headerlink" title="使用export直接导出"></a>使用<code>export</code>直接导出</h4><blockquote>
+<p>使用<code>export</code>暴露；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m1.js文件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> age = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>import &#123;xx,xx&#125; from &quot;xxx&quot;</code>引入；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建index.js文件用来引入m1.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;name,age&#125; <span class="keyword">from</span> <span class="string">&quot;./m1.js&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name);<span class="comment">//张三</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age);<span class="comment">//12</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用export一起导出"><a href="#使用export一起导出" class="headerlink" title="使用export一起导出"></a>使用<code>export</code>一起导出</h4><blockquote>
+<p>使用<code>export&#123;&#125;</code>暴露；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m1.js文件</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">13</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    name,</span><br><span class="line">    age</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>import &#123;xx,xx&#125; from &quot;xxx&quot;</code>引入；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建index.js文件用来引入m1.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;name,age&#125; <span class="keyword">from</span> <span class="string">&quot;./m1.js&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name);<span class="comment">//张三</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age);<span class="comment">//13</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用export-default导出"><a href="#使用export-default导出" class="headerlink" title="使用export default导出"></a>使用<code>export default</code>导出</h4><blockquote>
+<p>使用<code>export default</code>暴露；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m1.js文件</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">14</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;  <span class="comment">//默认导出：一个js文件中只能写一次</span></span><br><span class="line">    name,</span><br><span class="line">    age</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>import xxx from &quot;xxx&quot;</code>引入；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建index.js文件用来引入m1.js</span></span><br><span class="line"><span class="keyword">import</span> m1 <span class="keyword">from</span> <span class="string">&quot;./m1.js&quot;</span>; <span class="comment">//import 后面的 m1 是随便起的;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(m1); <span class="comment">//&#123; name: &#x27;张三&#x27;, age: 14 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(m1.<span class="property">name</span>);<span class="comment">//张三</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(m1.<span class="property">age</span>);<span class="comment">//14</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="混用"><a href="#混用" class="headerlink" title="混用"></a>混用</h4><blockquote>
+<p>使用<code>export</code>和<code>export default</code>暴露；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建m1.js文件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> email = <span class="string">&quot;nodeJs@163.com&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> name = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;  <span class="comment">//默认导出一个js文件中只能写一次</span></span><br><span class="line">    name,</span><br><span class="line">    age</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用<code>import xxx,&#123;xx,xx&#125; from &quot;xxx&quot;</code>引入；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建index.js文件用来引入m1.js</span></span><br><span class="line"><span class="keyword">import</span> m1,&#123;email&#125; <span class="keyword">from</span> <span class="string">&quot;./m1.js&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(m1); <span class="comment">//&#123; name: &#x27;张三&#x27;, age: 18 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(m1.<span class="property">name</span>);<span class="comment">//张三</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(m1.<span class="property">age</span>);<span class="comment">//18</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(email);<span class="comment">//nodeJs@163.com</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32019935/article/details/124619833">模块化规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/icemwj/article/details/119606468?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~ESLANDING~default-2-119606468-blog-124619833.pc_relevant_landingrelevant&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~ESLANDING~default-2-119606468-blog-124619833.pc_relevant_landingrelevant&utm_relevant_index=5">了解模块化的相关规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/296446c457c2">模块化规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/58f49f69a2fb">commonjs 与 ES6 模块化</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yezhihaobk/article/details/125225290">Node.js 模块化 module.exports 和 exports 的使用</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fsllala.top">Forward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fsllala.top/articles/4dee6fea.html">https://fsllala.top/articles/4dee6fea.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsllala.top" target="_blank">Forward の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CommonJs/">CommonJs</a><a class="post-meta__tags" href="/tags/ES6/">ES6</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_8.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/7cf6476b.html"><img class="prev-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_12.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">nvm、npm与nrm</div></div></a></div><div class="next-post pull-right"><a href="/articles/8ba9ed2d.html"><img class="next-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_32.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">NodeJs Express</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="avatar-img"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Forward</div><div class="author-info__description">记录一些知识点🥝</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fsllala"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A8%A1%E5%9D%97%E5%8C%96%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是模块化？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">模块化的好处？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%84%E8%8C%83"><span class="toc-number">3.</span> <span class="toc-text">常用的模块化规范?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CommonJs"><span class="toc-number">3.1.</span> <span class="toc-text">CommonJs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">3.1.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E7%8E%AF%E5%A2%83"><span class="toc-number">3.1.2.</span> <span class="toc-text">工作环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8exports-x%E6%9A%B4%E9%9C%B2%EF%BC%9B"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">使用exports.x暴露；</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8module-exports%E6%9A%B4%E9%9C%B2%E5%A4%9A%E4%B8%AA%EF%BC%9B"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">使用module.exports暴露多个；</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8module-exports%E6%9A%B4%E9%9C%B2%E5%8D%95%E4%B8%AA%EF%BC%9B"><span class="toc-number">3.1.3.3.</span> <span class="toc-text">使用module.exports暴露单个；</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#module-exports%E4%B8%8Eexports%E6%9C%89%E4%BB%80%E4%B9%88%E5%85%B3%E7%B3%BB%E6%88%96%E8%80%85%E5%8C%BA%E5%88%AB%E5%91%A2%EF%BC%9F"><span class="toc-number">3.1.3.4.</span> <span class="toc-text">module.exports与exports有什么关系或者区别呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#module%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.3.4.1.</span> <span class="toc-text">module对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#module-exports-%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.3.4.2.</span> <span class="toc-text">module.exports 对象</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ES6"><span class="toc-number">3.2.</span> <span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9-1"><span class="toc-number">3.2.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E7%8E%AF%E5%A2%83-1"><span class="toc-number">3.2.2.</span> <span class="toc-text">工作环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="toc-number">3.2.3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8export%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%87%BA"><span class="toc-number">3.2.3.1.</span> <span class="toc-text">使用export直接导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8export%E4%B8%80%E8%B5%B7%E5%AF%BC%E5%87%BA"><span class="toc-number">3.2.3.2.</span> <span class="toc-text">使用export一起导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8export-default%E5%AF%BC%E5%87%BA"><span class="toc-number">3.2.3.3.</span> <span class="toc-text">使用export default导出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%B7%E7%94%A8"><span class="toc-number">3.2.3.4.</span> <span class="toc-text">混用</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">4.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/3ef665a6.html" title="https"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="https"/></a><div class="content"><a class="title" href="/articles/3ef665a6.html" title="https">https</a><time datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/7067fd0d.html" title="TypeScript"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_16.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript"/></a><div class="content"><a class="title" href="/articles/7067fd0d.html" title="TypeScript">TypeScript</a><time datetime="2023-01-29T10:16:13.000Z" title="发表于 2023-01-29 18:16:13">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/46635768.html" title="NodeJs连接MySQL"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_10.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs连接MySQL"/></a><div class="content"><a class="title" href="/articles/46635768.html" title="NodeJs连接MySQL">NodeJs连接MySQL</a><time datetime="2022-12-30T07:55:55.000Z" title="发表于 2022-12-30 15:55:55">2022-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/799084bf.html" title="NodeJs Koa"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Koa"/></a><div class="content"><a class="title" href="/articles/799084bf.html" title="NodeJs Koa">NodeJs Koa</a><time datetime="2022-12-29T03:29:04.000Z" title="发表于 2022-12-29 11:29:04">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/8ba9ed2d.html" title="NodeJs Express"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_32.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Express"/></a><div class="content"><a class="title" href="/articles/8ba9ed2d.html" title="NodeJs Express">NodeJs Express</a><time datetime="2022-11-29T03:29:04.000Z" title="发表于 2022-11-29 11:29:04">2022-11-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Forward</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://vercel.fsllala.top/js/fancybox.umd.min.js"></script><script src="https://file.crazywong.com/npm/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://vercel.fsllala.top/js/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/js/jquery.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script async data-pjax src="/js/txMap.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://vercel.fsllala.top/js/canvas-nest.min.js"></script><script src="https://vercel.fsllala.top/js/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://vercel.fsllala.top/js/click-heart.min.js" async="async" mobile="false"></script><script src="https://vercel.fsllala.top/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><div id="web_bg"></div>

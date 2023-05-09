@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>跨域 | Forward の Blog</title><meta name="author" content="Forward"><meta name="copyright" content="Forward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是跨域 由于浏览器的同源策略限制，当一个请求url的协议、域名、端口三者之间任意一个与当前页面url不同时，需要跨域才能成功访问；  同源策略是浏览器的行为，是浏览器最核心也最基本的安全功能；   前端解决跨域方法 其实跨域问题都是找后端解决的；  误区：前端通过jsonp解决跨域原生写法123"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fsllala.top/articles/58add7e9"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://vercel.fsllala.top/css/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '跨域',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-28 09:46:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/onePic.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/wind.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/cursor.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="/css/txMap.css"><link rel="stylesheet" href="/css/avator.css"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_29.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Forward の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">跨域</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-09T01:53:27.000Z" title="发表于 2022-04-09 09:53:27">2022-04-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-28T01:46:33.875Z" title="更新于 2023-02-28 09:46:33">2023-02-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/">JS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/%E8%B7%A8%E5%9F%9F/">跨域</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="跨域"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><ul>
+<li><p>由于浏览器的同源策略限制，当一个请求<code>url</code>的<strong>协议、域名、端口</strong>三者之间任意一个与当前页面<code>url</code>不同时，需要跨域才能成功访问；</p>
+</li>
+<li><p>同源策略是<strong>浏览器的行为</strong>，是浏览器最核心也最基本的<strong>安全功能</strong>；</p>
+</li>
+</ul>
+<h2 id="前端解决跨域方法"><a href="#前端解决跨域方法" class="headerlink" title="前端解决跨域方法"></a>前端解决跨域方法</h2><blockquote>
+<p>其实跨域问题都是找后端解决的；</p>
+</blockquote>
+<h3 id="误区：前端通过jsonp解决跨域"><a href="#误区：前端通过jsonp解决跨域" class="headerlink" title="误区：前端通过jsonp解决跨域"></a>误区：前端通过jsonp解决跨域</h3><h4 id="原生写法"><a href="#原生写法" class="headerlink" title="原生写法"></a>原生写法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>创建一个script标签</span><br><span class="line">	<span class="keyword">var</span> os=<span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>)</span><br><span class="line"><span class="number">2.</span>给script一个src,src就是地址</span><br><span class="line">	os.<span class="property">src</span>=<span class="string">&quot;http://suggestion.baidu.com/su?cb=qwer&amp;wd=123&quot;</span></span><br><span class="line"><span class="number">3.</span>将script插入到页面</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(os)</span><br><span class="line"><span class="number">4.</span>回调函数处理数据</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">qwer</span>(<span class="params">d</span>)&#123;</span><br><span class="line">    	<span class="comment">//d就是后端返回的数据</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="ajax请求"><a href="#ajax请求" class="headerlink" title="ajax请求"></a>ajax请求</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>:<span class="string">&quot;http://suggestion.baidu.com/su?&quot;</span>,</span><br><span class="line">    <span class="attr">type</span>:<span class="string">&quot;get&quot;</span>,</span><br><span class="line">    <span class="attr">dataType</span>:<span class="string">&quot;jsonp&quot;</span>,</span><br><span class="line">    <span class="attr">data</span>:&#123;</span><br><span class="line">        <span class="attr">wd</span>:<span class="string">&quot;123&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">jsonp</span>:<span class="string">&quot;cb&quot;</span>,<span class="comment">// 回调参数key</span></span><br><span class="line">    <span class="attr">jsonpCallback</span>:<span class="string">&quot;test&quot;</span>,<span class="comment">// 回调函数value</span></span><br><span class="line">    <span class="attr">success</span>:<span class="keyword">function</span>(<span class="params">res</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">error</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;error&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656846360917ky.png" alt="jsonp"></p>
+<h4 id="jsonp实现原理"><a href="#jsonp实现原理" class="headerlink" title="jsonp实现原理"></a>jsonp实现原理</h4><ul>
+<li><p>动态生成script标签，通过src属性来加载；</p>
+</li>
+<li><p>默认使用<code>Jsonp</code>进行跨域时，请求的url地址后面会自动带上一个<code>callback=xxx</code>传给后端，后端需要对返回给前端的<code>json</code>数据做处理，此处的<code>callback</code>可通过<code>jsonp</code>来自定义，<code>xxx</code>可通过<code>jsonpCallback</code>来自定义；</p>
+</li>
+<li><p><code>jsonp</code>: 回调函数的参数，是与后端约定好的参数，必须与后端保持一致。不另外定义<code>jsonp</code>的话，一般默认为<code>jsonp:&#39;callback&#39;</code></p>
+</li>
+<li><p><code>jsonpCallback</code>: 回调函数名，用来包裹住<code>json</code>数据，不另外定义的话，这个参数的值往往是随机生成的。</p>
+</li>
+<li><p>按照上面百度搜索的<code>jsonp</code>来举例子：<code>http://suggestion.baidu.com/su?cb=test</code>；其中<code>?cb=test</code>中的<code>cb</code>为<code>key</code>，<code>test</code>为<code>value</code>；</p>
+</li>
+<li><p>前端会传递一个callback参数（key）给后端，接着后端返回数据时会将这个callback参数的值（value）作为函数名来包裹住json数据，最终返给前端的就是一段js代码了；</p>
+</li>
+<li><p>客户端需要将函数名称传递到服务器 可以如下实现：</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前端</span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">data</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;客户端的函数调用了&quot;</span>)</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://localhost:3000/test?callback=fn&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后端</span></span><br><span class="line"><span class="comment">//路由配置</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/test&quot;</span>,<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fnName = req.<span class="property">query</span>.<span class="property">callback</span>;</span><br><span class="line">  <span class="keyword">var</span> result = fnName + <span class="string">&#x27;(&#123;name:&quot;zhangsan&quot;&#125;)&#x27;</span>;</span><br><span class="line">  res.<span class="title function_">send</span>(result);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ol>
+<li>jsonp方法的实现是需要前端和后端配合的；</li>
+<li>jsonp只支持get请求，不支持post请求；</li>
+<li>jsonp有安全性问题：jsonp劫持，jsonp劫持属于CSRF漏洞；</li>
+</ol>
+<h3 id="前端通过代理解决跨域"><a href="#前端通过代理解决跨域" class="headerlink" title="前端通过代理解决跨域"></a>前端通过代理解决跨域</h3><blockquote>
+<p>反向代理有很多，可以用nodejs，可以用nginx，这里只介绍nginx</p>
+</blockquote>
+<h4 id="nginx-反向代理"><a href="#nginx-反向代理" class="headerlink" title="nginx 反向代理"></a>nginx 反向代理</h4><blockquote>
+<p>由于同源策略是浏览器导致的；所以可以找一个<strong>中间代理服务器</strong>；使用这个中间代理服务器去请求后端的地址；因为服务和服务之间是不存在同源策略的，所以中间代理服务器可以请求到后端接口数据；最后前端请求中间代理服务器；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常用命令</span></span><br><span class="line">start nginx 开启</span><br><span class="line">nginx -s stop 停止</span><br><span class="line">nginx -s reload 重新加载</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>官网下载稳定版</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://nginx.org/en/download.html</span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656846395917nginx.png" alt="nginx"></p>
+<ol start="2">
+<li>在根目录下，输入<code>cmd</code>打开终端</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656846458918nginx2.png" alt="nginx"></p>
+<ol start="3">
+<li>在终端中使用指令<code>start nginx</code>开启nginx</li>
+<li>在浏览器输入<code>localhost</code>，出现如下界面即代表开启成功</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656846752917nginx3.png" alt="nginx"></p>
+<ol start="5">
+<li>配置nginx ：nginx.conf里面配置</li>
+</ol>
+<blockquote>
+<p>后端的 ip +后端口 之后 最后必须有 <code>/</code>，而且最后的最后必须要带上<code>;</code></p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656846838916nginx4.png" alt="nginx"></p>
+<blockquote>
+<p>如果不带<code>;</code> nginx命令会不生效；</p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656846922917nginx5.png" alt="nginx"></p>
+<blockquote>
+<p>如果不带 <code>/ </code>；接口地址为404；</p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656846964974nginx6.png" alt="nginx"></p>
+<ol start="6">
+<li>修改前端的请求接口</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656847108917nginx7.png" alt="nginx"></p>
+<ol start="7">
+<li>将前端文件放到<code>nginx文件的html目录下</code>(也可以不放，见下文的补充)</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656847187916nginx8.png" alt="nginx"></p>
+<ol start="8">
+<li>重新加载一下<code>nginx -s reload</code>，然后在浏览器输入 <code>localhost/myDemo.html</code></li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656847224916nginx9.png" alt="nginx"></p>
+<blockquote>
+<p>未经过反向代理的接口为：</p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656847268916nginx10.png" alt="nginx"></p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><blockquote>
+<p>上面第7步中，也可以不将前端文件放到<code>nginx文件的html目录下</code></p>
+</blockquote>
+<ol>
+<li>项目通过<code>vsCode</code>插件<code>Live Server</code>起一个本地服务，地址是<code>127.0.0.1:5500</code>，<strong>然后这个服务就不能关掉了</strong>，当然页面可以关；</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656847329917nginx11.png" alt="nginx"></p>
+<ol start="2">
+<li>修改<code>nginx</code>的配置文件</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656847383916nginx12.png" alt="nginx"></p>
+<ol start="3">
+<li>重新加载一下<code>nginx -s reload</code>，然后在浏览器输入 <code>localhost/myDemo.html</code></li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656847420916nginx13.png" alt="nginx"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7024799741120610318">关于Jsonp跨域，你知道多少？</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40967353/article/details/107935984?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-2.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-2.pc_relevant_default&utm_relevant_index=5">jsonp解决跨域问题（简单易懂）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zjdyl/p/15620929.html">jsonp劫持</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7021433082691452936">前端解决跨域，nginx 反向代理</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/envon123/article/details/83270277">正确的Nginx跨域配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7027378324611530759">前端本地开发如何靠自己解决跨域</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fsllala.top">Forward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fsllala.top/articles/58add7e9.html">https://fsllala.top/articles/58add7e9.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsllala.top" target="_blank">Forward の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%B7%A8%E5%9F%9F/">跨域</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_29.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/5ca213d8.html"><img class="prev-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_25.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Vue3 Suspense</div></div></a></div><div class="next-post pull-right"><a href="/articles/6e473482.html"><img class="next-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_37.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">栈内存和堆内存</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="avatar-img"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Forward</div><div class="author-info__description">记录一些知识点🥝</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fsllala"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">前端解决跨域方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AF%E5%8C%BA%EF%BC%9A%E5%89%8D%E7%AB%AF%E9%80%9A%E8%BF%87jsonp%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-number">2.1.</span> <span class="toc-text">误区：前端通过jsonp解决跨域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E5%86%99%E6%B3%95"><span class="toc-number">2.1.1.</span> <span class="toc-text">原生写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ajax%E8%AF%B7%E6%B1%82"><span class="toc-number">2.1.2.</span> <span class="toc-text">ajax请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jsonp%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.3.</span> <span class="toc-text">jsonp实现原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-number">2.1.4.</span> <span class="toc-text">结论</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E9%80%9A%E8%BF%87%E4%BB%A3%E7%90%86%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F"><span class="toc-number">2.2.</span> <span class="toc-text">前端通过代理解决跨域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-number">2.2.1.</span> <span class="toc-text">nginx 反向代理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">2.2.2.</span> <span class="toc-text">补充</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/3ef665a6.html" title="https"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="https"/></a><div class="content"><a class="title" href="/articles/3ef665a6.html" title="https">https</a><time datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/7067fd0d.html" title="TypeScript"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_16.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript"/></a><div class="content"><a class="title" href="/articles/7067fd0d.html" title="TypeScript">TypeScript</a><time datetime="2023-01-29T10:16:13.000Z" title="发表于 2023-01-29 18:16:13">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/46635768.html" title="NodeJs连接MySQL"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_10.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs连接MySQL"/></a><div class="content"><a class="title" href="/articles/46635768.html" title="NodeJs连接MySQL">NodeJs连接MySQL</a><time datetime="2022-12-30T07:55:55.000Z" title="发表于 2022-12-30 15:55:55">2022-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/799084bf.html" title="NodeJs Koa"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Koa"/></a><div class="content"><a class="title" href="/articles/799084bf.html" title="NodeJs Koa">NodeJs Koa</a><time datetime="2022-12-29T03:29:04.000Z" title="发表于 2022-12-29 11:29:04">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/8ba9ed2d.html" title="NodeJs Express"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_32.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Express"/></a><div class="content"><a class="title" href="/articles/8ba9ed2d.html" title="NodeJs Express">NodeJs Express</a><time datetime="2022-11-29T03:29:04.000Z" title="发表于 2022-11-29 11:29:04">2022-11-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Forward</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://vercel.fsllala.top/js/fancybox.umd.min.js"></script><script src="https://file.crazywong.com/npm/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://vercel.fsllala.top/js/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/js/jquery.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script async data-pjax src="/js/txMap.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://vercel.fsllala.top/js/canvas-nest.min.js"></script><script src="https://vercel.fsllala.top/js/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://vercel.fsllala.top/js/click-heart.min.js" async="async" mobile="false"></script><script src="https://vercel.fsllala.top/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><div id="web_bg"></div>

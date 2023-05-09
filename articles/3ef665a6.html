@@ -1,0 +1,497 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>https | Forward の Blog</title><meta name="author" content="Forward"><meta name="copyright" content="Forward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="调研背景 公司项目打算采用HTTPS来保证数据的安全性。在计划零成本的前提下，看是否可以实现HTTPS。  HTTP与HTTPS区别 数据加密：HTTPS 使用 SSL&amp;#x2F;TLS 协议对传输数据进行加密，使得第三方无法窃取数据内容。HTTP 传输的数据是明文，容易被黑客窃取和篡改。 数据完整"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fsllala.top/articles/3ef665a6"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://vercel.fsllala.top/css/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'https',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-27 17:15:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/onePic.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/wind.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/cursor.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="/css/txMap.css"><link rel="stylesheet" href="/css/avator.css"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Forward の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">https</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-27T09:15:50.897Z" title="更新于 2023-04-27 17:15:50">2023-04-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/">JS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/https/">https</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="https"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="调研背景"><a href="#调研背景" class="headerlink" title="调研背景"></a>调研背景</h2><blockquote>
+<p>公司项目打算采用HTTPS来保证数据的安全性。在计划零成本的前提下，看是否可以实现HTTPS。</p>
+</blockquote>
+<h2 id="HTTP与HTTPS区别"><a href="#HTTP与HTTPS区别" class="headerlink" title="HTTP与HTTPS区别"></a>HTTP与HTTPS区别</h2><ul>
+<li>数据加密：HTTPS 使用 SSL&#x2F;TLS 协议对传输数据进行加密，使得第三方无法窃取数据内容。HTTP 传输的数据是明文，容易被黑客窃取和篡改。</li>
+<li>数据完整性：在数据传输过程中，HTTPS 使用消息认证码（MAC）校验数据完整性，如果数据被篡改或者损坏，在传输过程中会被损坏。</li>
+<li>身份验证：HTTPS 使用证书机制来验证网络通信的双方身份，加强了验证的强度和客户端和服务器之间的信任。HTTP 没有身份验证机制，容易遭受中间人攻击。</li>
+</ul>
+<blockquote>
+<p>HTTPS 并不是一种新的协议，我们可以理解为HTTPS协议 &#x3D; HTTP协议 + SSL&#x2F;TLS协议。通常来说，HTTP 是直接和 TCP 进行通信的。当我们使用  SSL&#x2F;TLS 时，会变成先和  SSL&#x2F;TLS 通信，然后再由  SSL&#x2F;TLS 和 TCP 进行通信。</p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/https.png" alt="https"></p>
+<h2 id="SSL-x2F-TLS"><a href="#SSL-x2F-TLS" class="headerlink" title="SSL&#x2F;TLS"></a>SSL&#x2F;TLS</h2><blockquote>
+<p>SSL（Secure Sockets Layer）和 TLS（Transport Layer Security）都是网络通信中的加密协议，它们的主要目的是在网络通信中保护传输数据的机密性和完整性。SSL是TLS的前身，TLS是SSL的升级版，这两者之间的区别如下：</p>
+</blockquote>
+<ul>
+<li>名称： SSL是早期加密协议的名称，后来被TLS所取代。目前常用的是TLS协议。</li>
+<li>历史：SSL协议是在1995年由Netscape开发的。随着时间的推移，SSL逐渐被其他安全协议所取代。TLS是SSL的继任者，旨在改进SSL协议中的一些安全问题。TLS协议于1999年发布，TLS 1.0成为Internet工程任务组（IETF）的正式标准。</li>
+<li>版本：SSL协议共有三个版本，分别为SSL 1.0、SSL 2.0和SSL 3.0，但是SSL 2.0存在一些安全性问题，并且被证明不可靠，已经不再使用。TLS协议目前有四个版本，分别为TLS 1.0、TLS 1.1、TLS 1.2和TLS 1.3。</li>
+<li>安全性：TLS协议比SSL协议更加安全，因为TLS协议改进了一些SSL协议中的安全问题。例如，TLS协议使用更强的加密算法，可以保护数据传输的安全性，并防止中间人攻击。TLS 1.3版本还可以提高握手过程的效率，并提供更好的安全保障。</li>
+<li>应用：SSL和TLS协议都可以用于加密HTTP请求，从而保护用户数据的安全性。HTTPS（HTTP over SSL&#x2F;TLS）是使用SSL或TLS协议加密的HTTP请求。</li>
+</ul>
+<p>总之，SSL和TLS协议都是用于在网络上保护数据传输的安全性的加密协议。虽然SSL协议已经不再使用，但TLS协议已经取代了SSL协议，并成为了现代互联网上加密通信的标准。</p>
+<p>注：可以F12，选择Security进行查看单管网站所用的版本；</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/tlsVersion.png" alt="tlsVersion"></p>
+<h2 id="证书颁发机构（CA）"><a href="#证书颁发机构（CA）" class="headerlink" title="证书颁发机构（CA）"></a>证书颁发机构（CA）</h2><ul>
+<li><p>证书颁发机构（Certificate Authority，CA）是一种受信任的第三方实体，它负责验证数字证书中的信息，并将其绑定到公钥上，从而帮助确保证书的真实性和完整性。</p>
+</li>
+<li><p>数字证书是一种用于加密通信和保护数据完整性的安全证书。数字证书包含一个公钥和与该公钥相关联的信息，例如证书的所有者和有效期。当客户端连接到一个使用SSL&#x2F;TLS协议保护的服务时，服务器会向客户端发送一个数字证书，以证明自己的身份和服务器的公钥。</p>
+</li>
+<li><p>在数字证书中，公钥由证书颁发机构签名，以验证证书中的信息的真实性和完整性。因此，证书颁发机构是数字证书中非常重要的一个组成部分，它为证书的真实性和完整性提供了保障。</p>
+</li>
+<li><p>通过使用受信任的证书颁发机构签名的数字证书，客户端可以确信服务器的身份，从而可以信任与服务器之间的通信。在Web浏览器中，浏览器会预装一组受信任的证书颁发机构，以验证访问的网站的证书是否有效。如果证书不是由受信任的证书颁发机构签发的，浏览器就会发出警告，提示用户访问的网站可能不安全。</p>
+</li>
+</ul>
+<h2 id="mkcert"><a href="#mkcert" class="headerlink" title="mkcert"></a>mkcert</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert">mkcert</a>  是一个用于制作本地可信任开发证书的简单工具，不需要配置。</p>
+<p>使用来自真实证书颁发机构 (CA) 的证书进行开发可能是危险的或不可能的（对于主机，如<code>example.test</code>,<code>localhost</code>或<code>127.0.0.1</code>），但<strong>自签名证书</strong>会导致信任错误。</p>
+<p>mkcert 自动在系统根存储中创建并安装本地 CA，并生成本地信任的证书。</p>
+</blockquote>
+<h2 id="Let’s-Encrypt"><a href="#Let’s-Encrypt" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h2><ul>
+<li>Let’s Encrypt是国外一个公共的免费SSL项目，由 Linux 基金会托管，由Mozilla、思科、Akamai、IdenTrust和EFF等组织发起，<strong>靠谱！</strong></li>
+<li>Let’s Encrypt安装部署简单、方便，目前Cpanel、Oneinstack等面板都已经集成了Let’s Encrypt一键申请安装，<strong>简单！</strong></li>
+<li>Let’s Encrypt证书<strong>有效期三个月</strong>，每三个月需要续签证书 <a target="_blank" rel="noopener" href="https://letsencrypt.org/2015/11/09/why-90-days.html">see why</a> </li>
+<li>Let’s Encrypt注册主域名<strong>认证频率</strong>20个&#x2F;周，同一域名重复认证 5次&#x2F;周 <a target="_blank" rel="noopener" href="https://letsencrypt.org/docs/rate-limits/">see more</a></li>
+<li>Let’s Encrypt不支持绑定IP，只能绑定域名，域名需可以在公共 Internet 上被访问到</li>
+</ul>
+<h2 id="mkcert与Let’s-Encrypt区别"><a href="#mkcert与Let’s-Encrypt区别" class="headerlink" title="mkcert与Let’s Encrypt区别"></a>mkcert与Let’s Encrypt区别</h2><ul>
+<li>认证机构：Let’s Encrypt是一个公共的免费认证机构，可以为任何人免费签发SSL证书。与之相反，mkcert是一个自签名证书工具，它创建的证书只能用于开发和测试目的。</li>
+<li>证书的有效期：Let’s Encrypt签发的证书的有效期为90天。在证书即将过期时，您可以自动更新证书。相反，mkcert默认情况下签发的证书有效期为2年，需要手动更新证书。</li>
+<li>使用场景：Let’s Encrypt适用于需要为公共访问的网站签发证书的情况，例如在线商店、社交媒体等。而mkcert适用于开发和测试环境中使用，例如本地开发机器、测试环境等。</li>
+<li>验证方式：Let’s Encrypt使用ACME协议来验证证书请求者的身份。ACME是一种自动化的验证协议，需要您在域名系统中创建一个特殊的DNS记录或在您的Web服务器上放置一个特殊的文件。ACME协议将验证这些信息，以确定您对域名或服务器的控制权；相反，mkcert使用本地证书颁发机构（CA）来签署证书，因此只能用于本地开发环境和测试环境。当您安装mkcert时，它将在您的计算机上创建一个本地CA，并将其添加到操作系统的信任列表中。这使得mkcert能够签署您本地环境中的SSL证书，而无需进行任何验证。</li>
+<li>配置和使用：使用Let’s Encrypt需要您安装ACME客户端，并将其配置为与您的Web服务器配合使用。您还需要将域名解析为您的Web服务器，并公开暴露您的服务器以接受来自Let’s Encrypt的验证请求。相反，使用mkcert只需要在您的计算机上安装它，并使用它来生成证书。由于mkcert是自签名的，您无需将域名解析为Web服务器或公开暴露Web服务器以进行验证。您可以使用mkcert在本地生成SSL证书，并将其用于开发和测试目的。</li>
+<li>安全性：Let’s Encrypt签发的证书使用公共密钥加密技术，可以提供与任何其他公共CA颁发的证书相同的安全保障。它还提供了TLSA记录，可防止DNS中间人攻击。由于mkcert是自签名的，因此不能提供与公共CA颁发的证书相同的安全保障。它仅适用于开发和测试环境，并不适合用于公共网站。但是，在本地环境中使用mkcert仍然比在未加密的HTTP连接上运行应用程序要更安全。</li>
+</ul>
+<p>总结：如果您需要在公共网站上使用SSL证书，建议使用Let’s Encrypt，因为Let’s Encrypt是一个针对公共网站的免费证书颁发机构。而如果您只是在开发和测试环境中使用SSL证书，则建议使用mkcert，因为mkcert则是一个针对本地开发和测试环境的工具，用于快速创建自签名的SSL证书。</p>
+<h2 id="关于IP绑定"><a href="#关于IP绑定" class="headerlink" title="关于IP绑定"></a>关于IP绑定</h2><h3 id="Let’s-Encrypt-1"><a href="#Let’s-Encrypt-1" class="headerlink" title="Let’s Encrypt"></a>Let’s Encrypt</h3><blockquote>
+<p>Let’s Encrypt不支持绑定IP地址，它只能绑定域名。Let’s Encrypt是一个免费的公共SSL证书颁发机构，它的证书是基于域名颁发的。在颁发证书时，Let’s Encrypt需要验证域名的所有权和控制权，而不能验证IP地址的所有权和控制权。因此，如果您想使用Let’s Encrypt证书保护您的网站，您必须使用域名来访问您的网站，而不能使用IP地址。如果您的网站必须使用IP地址来访问，您可以考虑使用其他证书颁发机构颁发的证书，这些机构可能支持使用IP地址来验证证书的所有权和控制权。</p>
+</blockquote>
+<h3 id="mkcert-1"><a href="#mkcert-1" class="headerlink" title="mkcert"></a>mkcert</h3><blockquote>
+<p>mkcert不支持直接绑定IP地址，因为SSL&#x2F;TLS证书的设计是基于域名而非IP地址的。然而，您可以通过使用一个本地的域名解析器，例如 <code>dnsmasq</code>，来将您的IP地址映射到一个本地的域名上。这样，您可以在本地使用这个域名来访问您的服务，然后使用mkcert来为这个域名生成SSL&#x2F;TLS证书。生成的证书将会包含这个本地的域名，而不是您的IP地址。请注意，这种方法只适用于本地开发和测试，因为这个本地的域名不能被公共的DNS服务器解析。如果您需要在公共网络上使用SSL&#x2F;TLS证书来保护您的服务，您必须使用一个真实的域名，并将它绑定到您的IP地址上。</p>
+</blockquote>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><blockquote>
+<p>win11，node(v16.18.0)、<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html"> nginx&#x2F;Windows-1.24.0</a></p>
+</blockquote>
+<h2 id="内网HTTPS-free"><a href="#内网HTTPS-free" class="headerlink" title="内网HTTPS(free)"></a>内网HTTPS(free)</h2><blockquote>
+<p>综上所述，内网HTTPS采用mkcert进行开发。</p>
+</blockquote>
+<ol>
+<li>mkcert下载：<a target="_blank" rel="noopener" href="https://github.com/FiloSottile/mkcert/releases/tag/v1.4.4">下载链接</a></li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step1.png" alt="mkcert_step1"></p>
+<ol start="2">
+<li>生成CA（certificate authority，即证书颁发机构）：输入cmd，初次安装mkcert</li>
+</ol>
+<p>输入<code>mkcert-v1.4.4-windows-amd64 -install</code> 命令 ，安装mkcert。将CA证书加入本地可信CA，使用此命令，就能帮助我们将mkcert使用的根证书加入了本地可信CA中，以后由该CA签发的证书在本地都是可信的。卸载命令 <code>mkcert-v1.4.4-windows-amd64 -uninstall</code></p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step2.png" alt="mkcert_step2"></p>
+<ol start="3">
+<li>安装成功，提示创建一个新的本地CA，本地CA现在已安装在系统信任存储中。</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step3.png" alt="mkcert_step3"></p>
+<ol start="4">
+<li>测试mkcert是否安装成功</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step4.png" alt="mkcert_step4"></p>
+<ol start="5">
+<li>查看CA证书存放位置</li>
+</ol>
+<p>输入<code>mkcert-v1.4.4-windows-amd64.exe -CAROOT</code>命令</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step5.png" alt="mkcert_step5"></p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step5_1.png" alt="mkcert_step5_1"></p>
+<p>按“Windows键+R”调出运行框，输入certmgr.msc命令。打开证书控制台。</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step5_2.png" alt="mkcert_step5_2"></p>
+<ol start="6">
+<li>生成自签证书,可供局域网内使用其他主机访问。</li>
+</ol>
+<ul>
+<li><p>直接跟多个要签发的域名或 ip 就行了，比如签发一个仅本机访问的证书(可以通过127.0.0.1和localhost，以及 ipv6 地址::1访问)</p>
+</li>
+<li><p>需要在局域网内测试 https 应用，这种环境可能不对外，因此也无法使用像Let’s encrypt这种免费证书的方案给局域网签发一个可信的证书，而且Let’s encrypt本身也不支持认证 Ip。</p>
+</li>
+<li><p>证书可信的三个要素：</p>
+<ul>
+<li>由可信的 CA 机构签发；</li>
+<li>访问的地址跟证书认证地址相符；</li>
+<li>证书在有效期内；</li>
+</ul>
+</li>
+<li><p>如果期望自签证书在局域网内使用，以上三个条件都需要满足。很明显自签证书一定可以满足证书在有效期内，那么需要保证前两条。我们签发的证书必须匹配浏览器的地址栏，比如局域网的 ip 或者域名，此外还需要信任 CA。操作如下：</p>
+</li>
+</ul>
+<blockquote>
+<p>创建自签名证书，例如要为域名：<code>fsllala.philisense.com</code>(随便输入的域名)和IP：<code>127.0.0.1 </code>、<code>192.168.11.242</code>(本机IP)创建证书，可以使用如下的命令</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkcert-v1<span class="number">.4</span><span class="number">.4</span>-windows-amd64.<span class="property">exe</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">192.168</span><span class="number">.11</span><span class="number">.242</span> fsllala.<span class="property">philisense</span>.<span class="property">com</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step6.png" alt="mkcert_step6"></p>
+<p>在mkcert软件同目录下，生成了自签证书。如图所示。</p>
+<blockquote>
+<p>上述命令会自动使用第2步创建的CA生成证书文件，其中<code>xxx.pem</code>为证书，<code>xxx-key.pem</code>为私钥。生成了证书和私钥以后，就可以在web服务器开启https了。</p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step6_1.png" alt="mkcert_step6_1"></p>
+<ol start="7">
+<li>通过nginx搭建web服务器并开启https</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//nginx常用命令</span></span><br><span class="line">start nginx 开启</span><br><span class="line">nginx -s stop 停止</span><br><span class="line">nginx -s reload 重新加载</span><br></pre></td></tr></table></figure>
+
+<p>修改nginx.conf文件中的证书和私钥的路径，别的暂时不做修改。<img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step7.png" alt="mkcert_step7"></p>
+<p>进入nginx文件夹，开启nginx</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step7_1.png" alt="mkcert_step7_1"></p>
+<ol start="8">
+<li>访问搭建的服务</li>
+</ol>
+<p>通过步骤6配置的IP进行访问，这里经测试，目前127.0.0.1:443和fsllala.philisense.com:443穆目前不能访问。</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step8.png" alt="mkcert_step8"></p>
+<p>将vue项目通过<code>npm run build</code>进行打包，然后将dist文件下中的打包文件放到nginx的html目录中</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step8_1.png" alt="mkcert_step8_1"></p>
+<p>再次通过步骤6配置的IP进行访问</p>
+<p>注：这里可能会遇到<code>Invalid Host header</code>的错误，<a target="_blank" rel="noopener" href="https://www.cnblogs.com/z937741304/p/10536237.html">解决方法</a></p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step8_2.png" alt="mkcert_step8_2"></p>
+<blockquote>
+<p>这里可以看到警告，意思大概为：请求并未升级到https，因为访问地址是ip地址，应该采用域名进行https访问。</p>
+</blockquote>
+<ol start="9">
+<li>本地开发指定 Host</li>
+</ol>
+<p>因为网上没有特定的概念词语，因此我这边总结的标题是本地开发指定 Host，但其实简单点就是：<code>localhost -&gt; devlopment.com</code>。</p>
+<p>通过win+R，然后输入<code>C:\Windows\System32\drivers\etc</code>，可以找到hosts文件</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step9.png" alt="mkcert_step9"></p>
+<p>然后将步骤6中的域名与本地ip进行映射</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step9_1.png" alt="mkcert_step9_1"></p>
+<p>稍等片刻，然后进行域名访问(这里不能挂代理，不然会访问不了)，可以看到，没有上面IP的提示了。</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step9_2.png" alt="mkcert_step9_2"></p>
+<ol start="10">
+<li>此时用局域网的<strong>另一台电脑</strong>进行访问，通过<code>https://192.168.11.242/#/</code>可以进行访问，通过<code>https://fsllala.philisense.com/#/</code>不能进行访问。</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/unsafe.png"></p>
+<p>可以看到另一台电脑上显示此证书是不安全的，因为我们用的证书是自签的，而不是公认的CA。我们需要将第2步产生的CA：</p>
+<p><code>rootCA-key.pem</code> 和 <code>rootCA.pem</code>，将 <code>rootCA.pem</code> 复制到 另一台PC 上，并将其后缀改为 <code>.crt</code>。</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/rootCA.webp" alt="rootCA"></p>
+<p>双击 <code>rootCA.crt</code>，根据提示安装证书，步骤如下：</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/rootCA_install.webp" alt="rootCA_install"></p>
+<p>重启浏览器再次访问，可以看到连接已经变为安全。</p>
+<ol start="11">
+<li>另一台机器使用域名进行访问</li>
+</ol>
+<p>同搭建环境的机器一样，在另一台机器上，也需要本地开发指定 Host，即：<code>192.168.11.242 fsllala.philisense.com</code>，然后稍等片刻，即可进行访问。(步骤10解决了HTTPS不信任的问题)</p>
+<ol start="12">
+<li>接口全部不能通信</li>
+</ol>
+<p>因为HTTP和HTTPS是两个不同的协议，所以两者不能进行通信。项目虽然是HTTPS了，但是接口都噶了，肯定是不行的，所以需要通过nginx进行接口的代理，将原来的HTTP接口，反向代理成HTTPS接口。</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step12.png" alt="mkcert_step12"></p>
+<ol start="13">
+<li>反向代理 接口HTTP为HTTPS，WS为WSS</li>
+</ol>
+<p>因为项目用到了HTTP和WS，所以都需要进行代理：以下代码意思为：接口中带有<code>/fsl/</code>的都会走<code>http://192.168.13.102:9003/</code>代理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">   listen       <span class="number">443</span> ssl;</span><br><span class="line">   server_name  localhost;</span><br><span class="line"></span><br><span class="line">#    ssl_certificate      cert.<span class="property">pem</span>;</span><br><span class="line">#    ssl_certificate_key  cert.<span class="property">key</span>;</span><br><span class="line">   #证书</span><br><span class="line">   ssl_certificate /mkcert2/<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>+<span class="number">2.</span>pem;</span><br><span class="line">   #私钥</span><br><span class="line">   ssl_certificate_key /mkcert2/<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>+<span class="number">2</span>-key.<span class="property">pem</span>;</span><br><span class="line"></span><br><span class="line">   ssl_session_cache    <span class="attr">shared</span>:<span class="attr">SSL</span>:1m;</span><br><span class="line">   ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">   ssl_ciphers  <span class="attr">HIGH</span>:!<span class="attr">aNULL</span>:!<span class="title class_">MD5</span>;</span><br><span class="line">   ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">location /fsl/ &#123;</span><br><span class="line"># root   html;</span><br><span class="line"># index  index.<span class="property">html</span> index.<span class="property">htm</span>;</span><br><span class="line">    proxy_pass <span class="attr">http</span>:<span class="comment">//192.168.13.102:9003/; #现接口地址</span></span><br><span class="line"></span><br><span class="line"># websocket</span><br><span class="line"># proxy_pass <span class="attr">http</span>:<span class="comment">//192.168.13.102:9003/;  #websocket服务器</span></span><br><span class="line">proxy_http_version <span class="number">1.1</span>;</span><br><span class="line">proxy_set_header <span class="title class_">Upgrade</span> $http_upgrade;</span><br><span class="line">proxy_set_header <span class="title class_">Connection</span> <span class="string">&quot;upgrade&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">   location / &#123;</span><br><span class="line">       root   html;</span><br><span class="line">       index  index.<span class="property">html</span> index.<span class="property">htm</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step13.png" alt="mkcert_step13"></p>
+<p>然后将vue项目中的接口服务地址和协议进行修改，如下图所示：</p>
+<blockquote>
+<p>需要修改IP，https&#x2F;wss、端口号、进行nginx代理的关键字(&#x2F;fsl&#x2F;)</p>
+</blockquote>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step13_1.png" alt="mkcert_step13_1"></p>
+<p>然后将vue进行打包，放到nginx下的html目录下；nginx通过<code>nginx -s reload</code>进行重新加载。</p>
+<ol start="14">
+<li>通过上述映射的域名(<a target="_blank" rel="noopener" href="https://fsllala.philisense.com)进行访问/">https://fsllala.philisense.com)进行访问</a></li>
+</ol>
+<p>可能会出现一些图片&#x2F;标乱码的情况，关闭浏览器，重新打开即可。</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step14.png" alt="mkcert_step14"></p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/mkcert_step14_1.png" alt="mkcert_step14_1"></p>
+<p>可以看到，此时接口(http、ws)均进行了代理，可以进行正常的访问。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>虽然可以将 SSL&#x2F;TLS 证书与 IP 地址绑定，但出于安全和兼容性考虑，建议尽可能使用域名来保护您的应用程序；</li>
+<li>使用mkcert可以进行内网的https，但是局域网内的另一台PC，会显示此https不安全，需要安装CA根证书解决不安全的问题；</li>
+<li>局域网的另一台PC，同搭建环境PC一样，不能直接通过映射的域名进行访问，需要修改host进行域名映射。</li>
+</ul>
+<h2 id="外网HTTPS"><a href="#外网HTTPS" class="headerlink" title="外网HTTPS"></a>外网HTTPS</h2><blockquote>
+<p>外网免费HTTPS是不能绑定IP的，无论是上面提及的Let’s Encrypt，还是腾讯云，阿里云等。</p>
+</blockquote>
+<h3 id="腾讯云"><a href="#腾讯云" class="headerlink" title="腾讯云"></a>腾讯云</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/400/89868">免费SSL</a></p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/tencentSSL.png" alt="tencentSSL"></p>
+<h3 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h3><p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/205510.html?spm=5176.21213303.J_6704733920.9.411353c9TKatgq&scm=20140722.S_help@@%E6%96%87%E6%A1%A3@@205510._.ID_help@@%E6%96%87%E6%A1%A3@@205510-RL_%E5%85%8D%E8%B4%B9ssl%E8%AF%81%E4%B9%A6-LOC_main-OR_ser-V_2-RK_rerank-P0_0">免费SSL</a></p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/aliSSL.png" alt="aliSSL"></p>
+<h2 id="相关文献"><a href="#相关文献" class="headerlink" title="相关文献"></a>相关文献</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34375473/article/details/122310838">为什么 HTTPS 比 HTTP 更安全？HTTPS 如何保证数据传输安全性</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36631580/article/details/126272277?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-126272277-blog-122310838.235%5Ev32%5Epc_relevant_increate_t0_download_v2_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-126272277-blog-122310838.235%5Ev32%5Epc_relevant_increate_t0_download_v2_base&utm_relevant_index=6">HTTPS为什么是安全的</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7141308011921801223#heading-0">前端本地开发指定域名以及 HTTPS 配置方案</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/379501905">mkcert 使用指南：如何快速创建自签名 SSL 证书</a></li>
+<li><a target="_blank" rel="noopener" href="https://xybdiy.blog.csdn.net/article/details/119676301?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-119676301-blog-128340862.235%5Ev32%5Epc_relevant_increate_t0_download_v2_base&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-119676301-blog-128340862.235%5Ev32%5Epc_relevant_increate_t0_download_v2_base&utm_relevant_index=5&ydreferer=aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI5MTE4MDcxL2FydGljbGUvZGV0YWlscy8xMjgzNDA4NjI/c3BtPTEwMDEuMjEwMS4zMDAxLjY2NTAuNCZ1dG1fbWVkaXVtPWRpc3RyaWJ1dGUucGNfcmVsZXZhbnQubm9uZS10YXNrLWJsb2ctMiU3RWRlZmF1bHQlN0VDVFJMSVNUJTdFUmF0ZS00LTEyODM0MDg2Mi1ibG9nLTEyMzE2MDM1Ny4yMzUlNUV2MzIlNUVwY19yZWxldmFudF9pbmNyZWF0ZV90MF9kb3dubG9hZF92Ml9iYXNlJmRlcHRoXzEtdXRtX3NvdXJjZT1kaXN0cmlidXRlLnBjX3JlbGV2YW50Lm5vbmUtdGFzay1ibG9nLTIlN0VkZWZhdWx0JTdFQ1RSTElTVCU3RVJhdGUtNC0xMjgzNDA4NjItYmxvZy0xMjMxNjAzNTcuMjM1JTVFdjMyJTVFcGNfcmVsZXZhbnRfaW5jcmVhdGVfdDBfZG93bmxvYWRfdjJfYmFzZSZ1dG1fcmVsZXZhbnRfaW5kZXg9Ng==">使用mkcert工具生成受信任的SSL证书，解决局域网本地https访问问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.zwying.com/archives/51.html">windows使用mkcert配置本地https环境</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv19764245">本地 https 环境解决方案</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903834272153613">使用mkcert创建自签名证书</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/z937741304/p/10536237.html">解决Invalid Host header问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://youyongba.github.io/doc/html/mkcert/">mkcert + nginx 搭建https</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38242293/article/details/112214657?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-112214657-blog-128340862.235%5Ev32%5Epc_relevant_increate_t0_download_v2_base&spm=1001.2101.3001.4242.2&utm_relevant_index=4">window使用mkcert，nginx的配置https证书</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37814112/article/details/123737847">Linux运维实战：Nginx方向代理wss或ws</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42714661/article/details/122978829">Host相关</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110168484">Let’s Encrypt实践指北</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/teamblog/p/6219204.html">免费SSL证书 之Let’s Encrypt申请与部署(Windows Nginx)</a></li>
+<li><a target="_blank" rel="noopener" href="https://xsphehe.com/blogDetail?id=8">windows环境免费申请SSL证书</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33313155/article/details/124746273">windows使用Certbot配置nginx的https证书</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.51cto.com/article/750673.html">如何使用 Nginx 和 Certbot 创建一个安全的 Web 服务器</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fsllala.top">Forward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fsllala.top/articles/3ef665a6.html">https://fsllala.top/articles/3ef665a6.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsllala.top" target="_blank">Forward の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/https/">https</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/articles/7067fd0d.html"><img class="prev-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_16.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">TypeScript</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="avatar-img"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Forward</div><div class="author-info__description">记录一些知识点🥝</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fsllala"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%A0%94%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">调研背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP%E4%B8%8EHTTPS%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">HTTP与HTTPS区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSL-x2F-TLS"><span class="toc-number">3.</span> <span class="toc-text">SSL&#x2F;TLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%81%E4%B9%A6%E9%A2%81%E5%8F%91%E6%9C%BA%E6%9E%84%EF%BC%88CA%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">证书颁发机构（CA）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mkcert"><span class="toc-number">5.</span> <span class="toc-text">mkcert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Let%E2%80%99s-Encrypt"><span class="toc-number">6.</span> <span class="toc-text">Let’s Encrypt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mkcert%E4%B8%8ELet%E2%80%99s-Encrypt%E5%8C%BA%E5%88%AB"><span class="toc-number">7.</span> <span class="toc-text">mkcert与Let’s Encrypt区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EIP%E7%BB%91%E5%AE%9A"><span class="toc-number">8.</span> <span class="toc-text">关于IP绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Let%E2%80%99s-Encrypt-1"><span class="toc-number">8.1.</span> <span class="toc-text">Let’s Encrypt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mkcert-1"><span class="toc-number">8.2.</span> <span class="toc-text">mkcert</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">9.</span> <span class="toc-text">开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%91HTTPS-free"><span class="toc-number">10.</span> <span class="toc-text">内网HTTPS(free)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">10.1.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E7%BD%91HTTPS"><span class="toc-number">11.</span> <span class="toc-text">外网HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%85%BE%E8%AE%AF%E4%BA%91"><span class="toc-number">11.1.</span> <span class="toc-text">腾讯云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91"><span class="toc-number">11.2.</span> <span class="toc-text">阿里云</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%8C%AE"><span class="toc-number">12.</span> <span class="toc-text">相关文献</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/3ef665a6.html" title="https"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="https"/></a><div class="content"><a class="title" href="/articles/3ef665a6.html" title="https">https</a><time datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/7067fd0d.html" title="TypeScript"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_16.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript"/></a><div class="content"><a class="title" href="/articles/7067fd0d.html" title="TypeScript">TypeScript</a><time datetime="2023-01-29T10:16:13.000Z" title="发表于 2023-01-29 18:16:13">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/46635768.html" title="NodeJs连接MySQL"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_10.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs连接MySQL"/></a><div class="content"><a class="title" href="/articles/46635768.html" title="NodeJs连接MySQL">NodeJs连接MySQL</a><time datetime="2022-12-30T07:55:55.000Z" title="发表于 2022-12-30 15:55:55">2022-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/799084bf.html" title="NodeJs Koa"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Koa"/></a><div class="content"><a class="title" href="/articles/799084bf.html" title="NodeJs Koa">NodeJs Koa</a><time datetime="2022-12-29T03:29:04.000Z" title="发表于 2022-12-29 11:29:04">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/8ba9ed2d.html" title="NodeJs Express"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_32.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Express"/></a><div class="content"><a class="title" href="/articles/8ba9ed2d.html" title="NodeJs Express">NodeJs Express</a><time datetime="2022-11-29T03:29:04.000Z" title="发表于 2022-11-29 11:29:04">2022-11-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Forward</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://vercel.fsllala.top/js/fancybox.umd.min.js"></script><script src="https://file.crazywong.com/npm/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://vercel.fsllala.top/js/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/js/jquery.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script async data-pjax src="/js/txMap.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://vercel.fsllala.top/js/canvas-nest.min.js"></script><script src="https://vercel.fsllala.top/js/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://vercel.fsllala.top/js/click-heart.min.js" async="async" mobile="false"></script><script src="https://vercel.fsllala.top/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><div id="web_bg"></div>

@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>栈内存和堆内存 | Forward の Blog</title><meta name="author" content="Forward"><meta name="copyright" content="Forward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="栈内存和堆内存 我们知道程序是需要加载到内存中来执行的，我们可以将内存划分为两个区域：栈内存和堆内存。   原始类型占据的空间是在栈内存中分配的； 对象类型占据的空间是在堆内存中分配的；  值类型和引用类型 原始类型的保存方式：在变量中保存的是值本身；所有原始类型也被称之为值类型； 对象类型的保存方"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fsllala.top/articles/6e473482"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://vercel.fsllala.top/css/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '栈内存和堆内存',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-28 09:47:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/onePic.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/wind.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/cursor.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="/css/txMap.css"><link rel="stylesheet" href="/css/avator.css"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_37.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Forward の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">栈内存和堆内存</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-24T10:41:44.000Z" title="发表于 2022-04-24 18:41:44">2022-04-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-28T01:47:33.487Z" title="更新于 2023-02-28 09:47:33">2023-02-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/">JS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/JS/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/">栈内存和堆内存</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">755</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="栈内存和堆内存"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="栈内存和堆内存"><a href="#栈内存和堆内存" class="headerlink" title="栈内存和堆内存"></a>栈内存和堆内存</h2><blockquote>
+<p>我们知道程序是需要加载到内存中来执行的，我们可以将内存划分为两个区域：<strong>栈内存和堆内存</strong>。</p>
+</blockquote>
+<ul>
+<li><strong>原始类型</strong>占据的空间是在<strong>栈内存</strong>中分配的；</li>
+<li><strong>对象类型</strong>占据的空间是在<strong>堆内存</strong>中分配的；</li>
+</ul>
+<h3 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h3><ul>
+<li>原始类型的保存方式：在变量中保存的是值本身；所有原始类型也被称之为值类型；</li>
+<li>对象类型的保存方式：在变量中保存的是对象的引用；所以对象类型也被称之为引用类型；</li>
+</ul>
+<blockquote>
+<ol>
+<li><p>JS代码是单线程的，代码从上到下执行，栈内存是先入后出的，所以上面的代码在栈的底部；</p>
+</li>
+<li><p>基本数据类型直接在栈内存中分配内存，变量保存的是值本身；</p>
+</li>
+<li><p>引用数据类型在堆内存中分配内存，并生成16进制地址，栈中的变量保存的是16进制地址，即对象的引用地址；</p>
+</li>
+<li><p>赋值操作是在栈中完成的：<code>const nickName=name;</code>将栈内存中name的值赋值给nickName，即<code>nickName=&quot;fsllala&quot;</code>;</p>
+<p><code>const info = obj;</code>将栈内存中obj的内存地址赋值给info，即<code>info=0x100;</code></p>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">&quot;fsllala&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="string">&quot;foo&quot;</span>,</span><br><span class="line">    <span class="attr">bar</span>: <span class="number">123</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> nickName = name;</span><br><span class="line"><span class="keyword">const</span> info = obj;</span><br><span class="line">info.<span class="property">foo</span> = <span class="string">&quot;hahaha&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">foo</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1672153266310stack.png" alt="stack"></p>
+<h3 id="变量的比较"><a href="#变量的比较" class="headerlink" title="变量的比较"></a>变量的比较</h3><blockquote>
+<p>基本数据类型比较的是值；引用数据类型比较的是地址；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">const</span> b = <span class="number">123</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a === b); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> m = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> n = &#123;&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(m === n); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1672153284493heap.png" alt="heap"></p>
+<h3 id="引用的赋值"><a href="#引用的赋值" class="headerlink" title="引用的赋值"></a>引用的赋值</h3><blockquote>
+<p>info是个对象，在栈内存中保存的是一个指针，在堆内存中保存的是代码；<code>info.friend</code>又是一个对象，保存一个指针，在堆内存中开辟新的内存来保存<code>info.friend</code>中的代码；所以<code>info.friend</code>为一个指针，赋值给了friend；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> info = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;why&quot;</span>,</span><br><span class="line">    <span class="attr">friend</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&quot;kobe&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> friend =info.<span class="property">friend</span>;</span><br><span class="line">friend.<span class="property">name</span>=<span class="string">&quot;fsllala&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(info.<span class="property">friend</span>); <span class="comment">//fsllala</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1672154427505fuzhi.png" alt="fuzhi"></p>
+<h3 id="值传递和引用传递的区别"><a href="#值传递和引用传递的区别" class="headerlink" title="值传递和引用传递的区别"></a>值传递和引用传递的区别</h3><h4 id="值传递"><a href="#值传递" class="headerlink" title="值传递"></a>值传递</h4><blockquote>
+<p>在栈内存中进行赋值，<code>const num = 100</code>基本数据类型，直接赋值；<code>foo(num)</code>其实是<code>foo(100)</code>；即<code>a=100</code>;然后又<code>a=200</code></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>) &#123;</span><br><span class="line">    a = <span class="number">200</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> num = <span class="number">100</span>;</span><br><span class="line"><span class="title function_">foo</span>(num);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num); <span class="comment">//100</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1672155794600zhi.png" alt="fuzhi"></p>
+<h4 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h4><blockquote>
+<p>在栈内存中进行赋值，引用数据类型赋值的是指针，在堆内存中保存代码；<code>foo(obj)</code>其实是<code>foo(指针)</code>，即<code>a=指针</code>，紧接着，<code>a=&#123;name:&quot;why&quot;&#125;</code>，在堆内存中保存其代码，分配一个新的指针给a，即<code>a=指针2</code></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>) &#123;</span><br><span class="line">    a = &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;why&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;obj&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(obj);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj);  <span class="comment">//&#123;name:&quot;obj&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1672156492006OBJ.png" alt="obj"></p>
+<blockquote>
+<p>同上面相比，上面是新开辟了一个堆内存，这个是通过指针对堆地址的代码进行了修改；</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a</span>) &#123;</span><br><span class="line">a.<span class="property">name</span> = <span class="string">&quot;why&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line"><span class="attr">name</span>: <span class="string">&quot;obj&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">foo</span>(obj);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>);  <span class="comment">//why</span></span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1672157849228obj.png" alt="obj"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fsllala.top">Forward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fsllala.top/articles/6e473482.html">https://fsllala.top/articles/6e473482.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsllala.top" target="_blank">Forward の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98/">栈内存和堆内存</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_37.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/articles/58add7e9.html"><img class="prev-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_29.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">跨域</div></div></a></div><div class="next-post pull-right"><a href="/articles/e98504f5.html"><img class="next-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_28.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">深浅拷贝</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="avatar-img"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Forward</div><div class="author-info__description">记录一些知识点🥝</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">47</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fsllala"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E5%86%85%E5%AD%98%E5%92%8C%E5%A0%86%E5%86%85%E5%AD%98"><span class="toc-number">1.</span> <span class="toc-text">栈内存和堆内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">值类型和引用类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">1.2.</span> <span class="toc-text">变量的比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%9A%84%E8%B5%8B%E5%80%BC"><span class="toc-number">1.3.</span> <span class="toc-text">引用的赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92%E5%92%8C%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">值传递和引用传递的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92"><span class="toc-number">1.4.1.</span> <span class="toc-text">值传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E4%BC%A0%E9%80%92"><span class="toc-number">1.4.2.</span> <span class="toc-text">引用传递</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/3ef665a6.html" title="https"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="https"/></a><div class="content"><a class="title" href="/articles/3ef665a6.html" title="https">https</a><time datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/7067fd0d.html" title="TypeScript"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_16.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="TypeScript"/></a><div class="content"><a class="title" href="/articles/7067fd0d.html" title="TypeScript">TypeScript</a><time datetime="2023-01-29T10:16:13.000Z" title="发表于 2023-01-29 18:16:13">2023-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/46635768.html" title="NodeJs连接MySQL"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_10.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs连接MySQL"/></a><div class="content"><a class="title" href="/articles/46635768.html" title="NodeJs连接MySQL">NodeJs连接MySQL</a><time datetime="2022-12-30T07:55:55.000Z" title="发表于 2022-12-30 15:55:55">2022-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/799084bf.html" title="NodeJs Koa"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Koa"/></a><div class="content"><a class="title" href="/articles/799084bf.html" title="NodeJs Koa">NodeJs Koa</a><time datetime="2022-12-29T03:29:04.000Z" title="发表于 2022-12-29 11:29:04">2022-12-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/8ba9ed2d.html" title="NodeJs Express"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_32.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NodeJs Express"/></a><div class="content"><a class="title" href="/articles/8ba9ed2d.html" title="NodeJs Express">NodeJs Express</a><time datetime="2022-11-29T03:29:04.000Z" title="发表于 2022-11-29 11:29:04">2022-11-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Forward</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://vercel.fsllala.top/js/fancybox.umd.min.js"></script><script src="https://file.crazywong.com/npm/vanilla-lazyload@latest/dist/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://vercel.fsllala.top/js/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/js/jquery.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script async data-pjax src="/js/txMap.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://vercel.fsllala.top/js/canvas-nest.min.js"></script><script src="https://vercel.fsllala.top/js/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://vercel.fsllala.top/js/click-heart.min.js" async="async" mobile="false"></script><script src="https://vercel.fsllala.top/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><div id="web_bg"></div>

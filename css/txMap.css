@@ -1,0 +1,47 @@
+/* 欢迎信息 */
+.item-headline{
+    display: none !important;
+}
+[data-theme="light"] .card-widget.card-announcement {
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+[data-theme="light"] .card-widget.card-info {
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+[data-theme="light"] .card-widget.card-recent-post {
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+[data-theme="light"] .card-widget.card-categories {
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+[data-theme="light"] .card-widget.card-tags {
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+[data-theme="light"] .card-widget.card-archives {
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+[data-theme="light"] .card-widget.card-webinfo {
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+/* 夜晚 */
+[data-theme="dark"] .card-widget.card-announcement {
+    background: rgba(0, 0, 0, 0.75) !important;
+}
+[data-theme="dark"] .card-widget.card-info {
+    background: rgba(0, 0, 0, 0.75) !important;
+}
+[data-theme="dark"] .card-widget.card-recent-post {
+    background: rgba(0, 0, 0, 0.75) !important;
+}
+[data-theme="dark"] .card-widget.card-categories {
+    background: rgba(0, 0, 0, 0.75) !important;
+}
+[data-theme="dark"] .card-widget.card-tags {
+    background: rgba(0, 0, 0, 0.75) !important;
+}
+[data-theme="dark"] .card-widget.card-archives {
+    background: rgba(0, 0, 0, 0.75) !important;
+}
+[data-theme="dark"] .card-widget.card-webinfo {
+    background: rgba(0, 0, 0, 0.75) !important;
+}
