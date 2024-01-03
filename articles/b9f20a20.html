@@ -1,0 +1,631 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>webpack | Forward の Blog</title><meta name="author" content="Forward"><meta name="copyright" content="Forward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是Webpack 官网  官方解释：webpack is a static module bundler for modern JavaScript applications.  翻译一下：webpack是一个静态的模块化打包工具，为现代的JavaScript应用程序；  我们来对上面的解释进行"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fsllala.top/articles/b9f20a20"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://vercel.fsllala.top/css/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'webpack',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-03 20:30:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/onePic.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/wind.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/cursor.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="/css/txMap.css"><link rel="stylesheet" href="/css/avator.css"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">51</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_64.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Forward の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">webpack</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-03T12:15:07.000Z" title="发表于 2024-01-03 20:15:07">2024-01-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-03T12:30:14.914Z" title="更新于 2024-01-03 20:30:14">2024-01-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/webpack/">webpack</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>16分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="webpack"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="什么是Webpack"><a href="#什么是Webpack" class="headerlink" title="什么是Webpack"></a>什么是Webpack</h1><ol>
+<li><p><a target="_blank" rel="noopener" href="https://webpack.js.org/">官网</a></p>
+</li>
+<li><p>官方解释：<code>webpack is a static module bundler for modern JavaScript applications.</code></p>
+</li>
+<li><p>翻译一下：webpack是一个静态的模块化打包工具，为现代的JavaScript应用程序；</p>
+</li>
+<li><p>我们来对上面的解释进行拆解：</p>
+<ul>
+<li>打包bundler：webpack可以将帮助我们进行打包，所以它是一个打包工具；</li>
+<li>静态的static：这样表述的原因是我们最终可以将代码打包成最终的静态资源（部署到静态服务器）；</li>
+<li>模块化module：webpack默认支持各种模块化开发，ES Module、CommonJS、AMD等；</li>
+<li>现代的modern：现代前端的开发越来越复杂，催生了webpack的出现和发展；</li>
+</ul>
+</li>
+<li><p>即：无论开发使用什么语言，最终通过webpack将代码打包成普通的静态资源（详见下文：<a href="#webpackYLT">Webpack依赖图</a>）；</p>
+</li>
+</ol>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>Webpack的运行是依赖Node环境的，所以我们电脑上必须有Node环境；</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>webpack的安装目前分为两个：webpack（代码使用）、webpack-cli（命令行使用）；</p>
+<blockquote>
+<p>这里推荐局部安装：假如电脑上有3个项目：vue2，vue3，react；三个项目都需要打包，可能依赖的webpack版本不一样；</p>
+<p>所以：应该每个项目有着自己的webpack，需要用什么版本，在本地的局部环境安装对应的webpack版本即可；</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack webpack-cli –g # 全局安装(不推荐)</span><br><span class="line">npm install webpack webpack-cli –D # 局部安装(-D开发环境安装,生产环境已经打包成静态资源了,不需要使用webpack)</span><br></pre></td></tr></table></figure>
+
+<h1 id="基础打包"><a href="#基础打包" class="headerlink" title="基础打包"></a>基础打包</h1><h2 id="默认打包"><a href="#默认打包" class="headerlink" title="默认打包"></a>默认打包</h2><ol>
+<li>创建个文件夹，使用<code>npm init -y</code>创建package.json；</li>
+<li><code>npm i webpack webpack-cli -D</code>安装局部环境依赖；</li>
+<li>在根目录下新建<code>src</code>文件夹，文件夹下新建入口文件<code>index.js</code>，写入任意js代码；</li>
+<li>在根目录下<code>cmd</code>：通过<code>npx webpack</code>进行打包&#x3D;&#x3D;&gt;打包成功：根目录下生成<code>dist</code>文件夹，下面有<code>main.js</code>；(可以将此打包之后的js引入html中，可以正常运行)；</li>
+<li>但是如果根目录下没有<code>src</code>文件夹(其他名字的文件夹也不行)，或者<code>src</code>文件夹下的js不叫<code>index.js</code>进行打包&#x3D;&#x3D;&gt;打包失败；（即：文件夹必须叫src，入口文件必须叫index.js）；</li>
+<li>那如果就不想有src文件夹或index.js如何进行打包呢？这里用到了配置参数；</li>
+</ol>
+<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><blockquote>
+<p>修改文件夹名为location，下面js改为main.js；</p>
+</blockquote>
+<ul>
+<li>指定入口；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --entry ./location/main.js   #-entry为入口文件的意思, 后面跟 入口文件的路径;</span><br></pre></td></tr></table></figure>
+
+<p>如何修改打包之后的文件夹名和下面的js名呢？</p>
+<ul>
+<li>指定输出文件夹名、输出文件名；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --entry ./location/main.js --output-filename fsl.js --output-path fsllala</span><br><span class="line">#--output-filename fsl.js   指定输出文件名为 fsl.js</span><br><span class="line">#--output-path fsllala      指定输出文件夹名为 fsllala </span><br></pre></td></tr></table></figure>
+
+<p>但是这样写配置参数，太长了，不方便，如何解决呢？&#x3D;&#x3D;&gt;单独创建配置文件；</p>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><blockquote>
+<p>在根目录下新建<code>webpack.config.js</code>(固定名字)，里面进行参数配置；</p>
+</blockquote>
+<p>此时目录结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">|—— node_modules</span><br><span class="line">|—— package.json</span><br><span class="line">|—— package-lock.json</span><br><span class="line">|—— webpack.config.js #配置文件</span><br><span class="line">└── location          #源码目录  (一般叫src,这里是为了改配置,所以改为了location)</span><br><span class="line">        |── main.js   #入口文件  (一般叫index.js,这里是为了改配置,所以改为了main.js)</span><br><span class="line">        |── name.js   #依赖文件</span><br><span class="line">        └── age.js    #依赖文件</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><code>webpack.config.js</code>其实是个模块，webpack的运行环境为<code>nodejs</code>，<code>nodejs</code>会将该模块导出的内容进行读取；所以需要使用<a href="https://fsllala.top/articles/4dee6fea">node的CommonJs</a>；不能使用ES6模块，即：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js文件</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;&#125;  <span class="comment">// commonJs</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进行相关参数配置</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./location/main.js&quot;</span>, <span class="comment">// 入口文件</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;fsl.js&quot;</span>, <span class="comment">// 输出文件名</span></span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;fsllala&quot;</span>), <span class="comment">// 输出文件路径 (这里必须是绝对路径)</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果不想叫<code>webpack.config.js</code>，而是叫<code>vue.config.js</code>，运行<code>npx webpack</code>&#x3D;&#x3D;&gt;报错；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack --config vue.config.js # 通过指定配置文件名,可以解决</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>npm run build</code>是怎么做到打包的呢</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;build&quot;</span>:<span class="string">&quot;webpack --config vue.config.js&quot;</span>  <span class="comment">// 这里不是cmd,所以去掉npx</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="进阶打包"><a href="#进阶打包" class="headerlink" title="进阶打包"></a>进阶打包</h1><h2 id="Webpack依赖图"><a href="#Webpack依赖图" class="headerlink" title="Webpack依赖图"></a><a id="webpackYLT">Webpack依赖图</a></h2><p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/webpack.png" alt="webpack"></p>
+<p>webpack到底是如何对我们的项目进行打包的呢？</p>
+<ul>
+<li>事实上webpack在处理应用程序时，它会根据命令或者配置文件找到入口文件；</li>
+<li>从入口开始，会生成一个 依赖关系图，这个依赖关系图会包含应用程序中所需的所有模块（比如.js文件、css文件、图片、字 体等）；</li>
+<li>然后遍历图结构，打包一个个模块 (webpack默认只给JS文件打包，别的文件需要根据文件的不同使用不同的loader来解析)；</li>
+</ul>
+<h2 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h2><p>新建目录结构如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">|—— node_modules</span><br><span class="line">|—— package.json</span><br><span class="line">|—— package-lock.json</span><br><span class="line">|—— webpack.config.js #配置文件</span><br><span class="line">|—— index.html        </span><br><span class="line">└── src               #源码目录 </span><br><span class="line">     |── index.js     #入口文件</span><br><span class="line">     |── components   # 存放js的文件夹 </span><br><span class="line">     |── css          # 存放css的文件夹 </span><br></pre></td></tr></table></figure>
+
+<h3 id="验证loader作用"><a href="#验证loader作用" class="headerlink" title="验证loader作用"></a>验证loader作用</h3><p>验证上问提及：webpack默认只给JS文件打包，别的文件需要根据文件的不同使用不同的loader来解析；</p>
+<blockquote>
+<p>期望效果：</p>
+<ol>
+<li>index.html 文件中仅引入打包之后的入口文件，别的不做任何操作；</li>
+<li>页面展示有css样式的内容；</li>
+</ol>
+</blockquote>
+<p>编写验证代码</p>
+<ol>
+<li>css文件夹下新建div_style.css</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* css/div_style.css */</span></span><br><span class="line"><span class="selector-class">.redColor</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>components文件夹下新建div_cpns.js</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// components/div_cpns.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;../css/div_style.css&quot;</span>;  <span class="comment">// 模块引入;添加到依赖图中 (css模块没有进行导出)</span></span><br><span class="line"><span class="keyword">const</span> div = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">div.<span class="property">innerHTML</span> = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line">div.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;redColor&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">append</span>(div);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>入口文件引入div_cpns.js</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./components/div_cpns.js&quot;</span>; <span class="comment">// 模块引入;添加到依赖图中 (div_cpns.js模块没有进行导出)</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>使用<code>npm run build</code>进行打包</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># package.json </span><br><span class="line"> &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;:&quot;webpack&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>打包出错，打包结果如下图所示：</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/css-loader1.png" alt="css-loader1"></p>
+<p>上面的错误信息告诉我们需要一个loader来加载这个css文件，但是loader是什么呢？</p>
+<ul>
+<li>loader 可以用于对模块的源代码进行转换；</li>
+<li>我们可以将css文件也看成是一个模块，我们是通过import来加载这个模块的；</li>
+<li>在加载这个模块时，webpack其实并不知道如何对其进行加载，我们必须制定对应的loader来完成这个功能；</li>
+<li>webpack默认支持对js文件的处理；其他文件需要根据文件的不同使用不同的loader来解析；</li>
+</ul>
+<h3 id="css-loader与style-loader"><a href="#css-loader与style-loader" class="headerlink" title="css-loader与style-loader"></a>css-loader与style-loader</h3><ul>
+<li>css-loader：可以解析css文件的loader。但该loader并不会将解析之后的css插入到页面中，即如果只使用该loader会产生css解析完了，但是页面没有效果的现象；</li>
+<li>style-loader：会将解析之后的css插入到页面，即完成插入style的操作；</li>
+</ul>
+<p>loader下载：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install css-loader style-loader -D  #loader其实都是研发环境的,生产环境都是解析之后的静态文件;</span><br></pre></td></tr></table></figure>
+
+<h3 id="loader配置"><a href="#loader配置" class="headerlink" title="loader配置"></a>loader配置</h3><ul>
+<li>webpack.config.js文件中的module.rules中允许我们配置多个loader；</li>
+<li>module.rules的配置如下：<ul>
+<li>rules属性对应的值是一个数组，数组中存放的是一个个的Rule，Rule是一个对象，对象中可以设置多个属性：<ul>
+<li>test属性：用于对 resource（资源）进行匹配的，通常会设置成正则表达式；</li>
+<li>use属性：对应的值是一个数组，数组里为各种loader；注意：loader的执行顺序是从后往前的；</li>
+<li>use属性数组内可以为对象，对象属性为：<ul>
+<li>loader：必须有一个 loader属性，对应的值是一个字符串；</li>
+<li>options：可选的属性，值是一个字符串或者对象，值会被传入到loader中</li>
+<li>query：目前已经使用options来替代；</li>
+</ul>
+</li>
+<li>use属性数组内可以为字符串，是 loader 属性的简写方式；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">module</span>:&#123;</span><br><span class="line">        <span class="attr">rules</span>:[</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 告诉webpack匹配什么文件(.在正则中表示除换行符之外的任何字符,所以需要\进行转义)</span></span><br><span class="line">                <span class="attr">test</span>:<span class="regexp">/\.css$/</span>,  </span><br><span class="line">                <span class="comment">// 告诉webpack使用什么loader进行匹配之后的处理(loader的执行顺序是从后往前的)</span></span><br><span class="line">                <span class="attr">use</span>:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>] </span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>npm run build</code>进行打包&#x3D;&#x3D;&gt;打包成功；</p>
+<p>index.html引入打包之后的文件，查看效果：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./dist/main.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="less-loader"><a href="#less-loader" class="headerlink" title="less-loader"></a>less-loader</h3><blockquote>
+<p>less同理，环境不支持该预处理器，需将现将less、sass等编写的css需要通过工具转换成普通的css；</p>
+</blockquote>
+<p>loader下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install less-loader -D</span><br></pre></td></tr></table></figure>
+
+<p>配置webpack.config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">module</span>:&#123;</span><br><span class="line">        <span class="attr">rules</span>:[</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>:<span class="regexp">/\.less$/</span>,</span><br><span class="line">                <span class="attr">use</span>:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;less-loader&#x27;</span>]  <span class="comment">// less会转化为css,所以还需要css-loader</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="PostCSS"><a href="#PostCSS" class="headerlink" title="PostCSS"></a>PostCSS</h3><p>参考文献：<a target="_blank" rel="noopener" href="https://blog.csdn.net/xun__xing/article/details/108290032">PostCss</a>，<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61344763">PostCSS真的太好用了！</a></p>
+<p>loader下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install postcss-loader -D</span><br></pre></td></tr></table></figure>
+
+<h4 id="autoprefixer"><a href="#autoprefixer" class="headerlink" title="autoprefixer"></a>autoprefixer</h4><ul>
+<li>有一些css属性存在浏览器兼容问题，需要开发手动添加浏览器前缀；</li>
+<li>而Autoprefixer将使用基于当前浏览器支持的特性和属性数据去为你自动添加前缀(-webkit-，-ms-，-moz-)。你可以尝试下Autoprefixer的demo：<a target="_blank" rel="noopener" href="http://autoprefixer.github.io/">Autoprefixer CSS online</a></li>
+</ul>
+<p>使用postcss插件Autoprefixer：</p>
+<ol>
+<li>下载</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install autoprefixer -D</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>设置单独的postcss配置文件：根目录下，新建<code>postcss.config.js</code>( 注意：因为postcss需要有对应的插件才会起效果，所以我们需要配置它的plugin)；</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// postcss.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="string">&quot;autoprefixer&quot;</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>设置loader</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">module</span>:&#123;</span><br><span class="line">        <span class="attr">rules</span>:[</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>:<span class="regexp">/\.css$/</span>,</span><br><span class="line">                <span class="comment">// postcss先对css进行处理,所以写在后面(从后往前解析)</span></span><br><span class="line">                <span class="attr">use</span>:[<span class="string">&#x27;style-loader&#x27;</span>,<span class="string">&#x27;css-loader&#x27;</span>,<span class="string">&#x27;postcss-loader&#x27;</span>] </span><br><span class="line">            &#125;,</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>相关css代码</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* css/div_style.css */</span></span><br><span class="line"><span class="selector-class">.redColor</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">24px</span>;</span><br><span class="line">    user-select: none;  <span class="comment">/* 这个属性有兼容差异,这里我们没做处理, Autoprefixer自动做浏览器兼容处理*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><code>npm run build</code>进行打包，index.html引入打包之后的文件，检查css</li>
+<li>效果如下</li>
+</ol>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/Autoprefixer.png" alt="Autoprefixer"></p>
+<h4 id="postcss-preset-env"><a href="#postcss-preset-env" class="headerlink" title="postcss-preset-env"></a>postcss-preset-env</h4><ul>
+<li>集成了postcss常用的插件(Autoprefixer，polyfill……)；</li>
+<li>所以用postcss-preset-env，就不需要安装使用Autoprefixer了，因为内部已经集成了Autoprefixer；</li>
+</ul>
+<p>使用postcss插件postcss-preset-env同Autoprefixer步骤；</p>
+<h3 id="Webpack打包图片"><a href="#Webpack打包图片" class="headerlink" title="Webpack打包图片"></a>Webpack打包图片</h3><h4 id="asset-module-type"><a href="#asset-module-type" class="headerlink" title="asset module type"></a><a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/asset-modules">asset module type</a></h4><ul>
+<li><p><strong>我们当前使用的webpack版本是webpack5：</strong></p>
+<ul>
+<li>在webpack5之前，加载这些资源我们需要使用一些loader，比如raw-loader 、url-loader、file-loader；(需要下载对应的loader，然后使用)</li>
+<li>在webpack5开始，我们可以直接使用资源模块类型（asset module type），来替代上面的这些loader；(不需要下载loader)</li>
+</ul>
+</li>
+<li><p>**资源模块类型(asset module type)**，通过添加 4 种新的模块类型，来替换所有这些 loader：</p>
+<ul>
+<li>asset&#x2F;resource 发送一个单独的文件并导出 URL；(之前通过使用 file-loader 实现)</li>
+<li>asset&#x2F;inline 导出一个资源的 data URI；(之前通过使用 url-loader 实现)</li>
+<li>asset&#x2F;source 导出资源的源代码（基本不用）；(之前通过使用 raw-loader 实现)</li>
+<li>asset在导出一个 data URI 和发送一个单独的文件之间自动选择；(之前通过使用 url-loader，并且配置资源体积限制实现)</li>
+</ul>
+</li>
+</ul>
+<h4 id="asset-module-type的使用"><a href="#asset-module-type的使用" class="headerlink" title="asset module type的使用"></a>asset module type的使用</h4><ol>
+<li>新建文件夹img，用于存放图片；</li>
+<li>在components下，新建img_cpns.js；</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/components/img_cpns.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在webpack中,任何文件都是一个模块,都可以引入其模块;</span></span><br><span class="line"><span class="comment">// 引入图片模块</span></span><br><span class="line"><span class="keyword">import</span> kunkun <span class="keyword">from</span> <span class="string">&quot;../img/ikun.jpg&quot;</span>;  <span class="comment">// 因为要对该图片使用,所以起了个别名,而不是直接引入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;img&quot;</span>);</span><br><span class="line">img.<span class="property">src</span> = kunkun;</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">append</span>(img);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在入口文件里面引入img_cpns.js，构成webpack的依赖图结构；</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./components/div_cpns.js&quot;</span>; <span class="comment">// 模块引入;添加到依赖图中 (div_cpns.js模块没有进行导出)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./components/img_cpns.js&quot;</span>; <span class="comment">// 模块引入;添加到依赖图中 (img_cpns.js模块没有进行导出)</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>webpack5版本开始，不需要下载资源loader，只需要配置asset module type即可；</li>
+</ol>
+<div class="tabs" id="assetmoduletype"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#assetmoduletype-1">asset/resource</button></li><li class="tab"><button type="button" data-href="#assetmoduletype-2">asset/inline</button></li><li class="tab"><button type="button" data-href="#assetmoduletype-3">asset</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="assetmoduletype-1"><blockquote>
+<p>将图片全部转换为一个单独的文件</p>
+</blockquote>
+<ul>
+<li>配置webpack</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">module</span>:&#123;</span><br><span class="line">        <span class="attr">rules</span>:[</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>:<span class="regexp">/\.(png|jpe?g|gif|svg|webp)$/</span>,  <span class="comment">// 图片资源 (jpe?g表示jpg和jpeg格式)</span></span><br><span class="line">                <span class="comment">// 打包图片,将图片打包成一个单独的文件,然后引入</span></span><br><span class="line">                <span class="attr">type</span>:<span class="string">&#x27;asset/resource&#x27;</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过<code>npm run build</code>进行打包；观察打包之后的dist文件夹；**(每次打包前需要删除之前的dist文件夹，防止之前的分包依旧保留，后续可以通过配置实现自动删除)**</li>
+</ul>
+<p>发现将原来的ikun.jpg，打包成了1d40d06e317136088c5a.jpg；然后main.js对打包之后的图片地址做了处理；</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/assetResource.png" alt="assetResource"></p>
+<ul>
+<li>浏览器运行，可看到图片正常显示，图片地址为在线地址：<a target="_blank" rel="noopener" href="http://127.0.0.1:5500/dist/1d40d06e317136088c5a.jpg">http://127.0.0.1:5500/dist/1d40d06e317136088c5a.jpg</a></li>
+</ul>
+<blockquote>
+<p>如何做到自定义输出文件名呢？</p>
+</blockquote>
+<p>自定义输出文件名：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/asset-modules#custom-output-filename">官网</a></p>
+<ul>
+<li>配置webpack</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.(png|jpe?g|gif|svg|webp)$/</span>, <span class="comment">// 图片资源 (jpe?g表示jpg和jpeg格式)</span></span><br><span class="line">        <span class="comment">// 打包图片,将图片打包成一个单独的文件,然后引入</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;asset/resource&quot;</span>,</span><br><span class="line">        <span class="comment">// 匹配符合test条件的文件(如果直接写到output,就不会匹配test条件)</span></span><br><span class="line">        <span class="attr">generator</span>: &#123;</span><br><span class="line">          <span class="attr">filename</span>: <span class="string">&quot;[name]_[hash][ext]&quot;</span>, </span><br><span class="line">            <span class="comment">// [name]代表原文件名;</span></span><br><span class="line">            <span class="comment">// [etx]代表原文件后缀;</span></span><br><span class="line">            <span class="comment">// [hash]唯一ID(防止打包前不同文件夹内有名字后缀都相同的文件,打包之后无法区分)</span></span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>npm run build</code>进行打包；观察打包之后的dist文件夹；**(每次打包前需要删除之前的dist文件夹，防止之前的分包依旧保留，后续可以通过配置实现自动删除)**</p>
+<p>发现将原来的ikun.jpg，打包成了：ikun_1d40d06e317136088c5a.jpg；</p>
+<blockquote>
+<p>如何将图片资源放到一个单独的文件夹内呢？</p>
+</blockquote>
+<ul>
+<li>配置webpack</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">generator</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;images/[name]_[hash][ext]&quot;</span>, </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="assetmoduletype-2"><blockquote>
+<p>将图片全部转换为base64格式；</p>
+</blockquote>
+<ul>
+<li><p>优点：相比较于 asset&#x2F;resource，少发送(图片加载)网络请求；</p>
+</li>
+<li><p>缺点：造成JS文件偏大，下载JS文件、解析本身消耗时间非常长&#x3D;&#x3D;&gt;造成代码阻塞；</p>
+</li>
+<li><p>配置webpack</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">module</span>:&#123;</span><br><span class="line">        <span class="attr">rules</span>:[</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>:<span class="regexp">/\.(png|jpe?g|gif|svg|webp)$/</span>,  <span class="comment">// 图片资源 (jpe?g表示jpg和jpeg格式)</span></span><br><span class="line">                <span class="comment">// 打包图片,inline的寓意就是将图片转为base64,然后放到了打包之后的main.js里面(行内)</span></span><br><span class="line">                <span class="attr">type</span>:<span class="string">&#x27;asset/inline&#x27;</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过<code>npm run build</code>进行打包；观察打包之后的dist文件夹；**(每次打包前需要删除之前的dist文件夹，防止之前的分包依旧保留，后续可以通过配置实现自动删除)**</li>
+</ul>
+<p>发现dist文件夹里面只有一个main.js；</p>
+<p><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/assetInline.png" alt="assetInline"></p>
+<ul>
+<li>浏览器运行，可看到图片正常显示，图片地址为base64：data:image&#x2F;jpeg;base64,&#x2F;9j&#x2F;4AAQSkZJRgABAQAAAQABAAD…P2atuIjKPvHtU5hxbHHVqzLS6xGJv4G6CtISEIPRulecZn&#x2F;&#x2F;Z</li>
+</ul><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div><div class="tab-item-content" id="assetmoduletype-3"><blockquote>
+<p>可通过合理的配置，决定图片的转化；</p>
+</blockquote>
+<p>合理的配置：</p>
+<ul>
+<li><p>小一点的图片：进行base64编码；</p>
+</li>
+<li><p>大一点的图片：单独的图片打包，形成url地址，单独的请求这个url图片；</p>
+</li>
+<li><p>配置webpack：<a target="_blank" rel="noopener" href="https://webpack.docschina.org/guides/asset-modules#general-asset-type">官网</a></p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.(png|jpe?g|gif|svg|webp)$/</span>, <span class="comment">// 图片资源 (jpe?g表示jpg和jpeg格式)</span></span><br><span class="line">        <span class="comment">// 打包图片</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;asset&quot;</span>,</span><br><span class="line">        <span class="attr">parser</span>: &#123;</span><br><span class="line">          <span class="attr">dataUrlCondition</span>: &#123;</span><br><span class="line">            <span class="attr">maxSize</span>: <span class="number">18</span> * <span class="number">1024</span>, <span class="comment">// 18kb (小于18kb,转为base64;大于18kb,单独打包成文件)</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="fas fa-arrow-up"></i></button></div></div></div>
+
+<h3 id="Babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h3><ul>
+<li>webpack可以打包JS文件，但是ES6+的语法不会转化为ES5；</li>
+<li>Babel是一个工具链，主要用于旧浏览器或者环境中将ECMAScript 2015+代码转换为向后兼容版本的JavaScript；</li>
+<li>包括：ES6+，TypeScript、Vue、React等通过Babel转换为向后兼容版本的JavaScript；</li>
+<li>在线Babel转换：<a target="_blank" rel="noopener" href="https://babeljs.io/">官网</a></li>
+</ul>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>Babel的使用，需要安装相应的插件(这里不过多介绍，一般来说安装<strong>预设preset</strong>即可)；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 基本不安装此插件</span><br><span class="line">npm install @babel/plugin-transform-arrow-functions -D    #箭头函数 转成 普通函数 插件</span><br><span class="line">npm install @babel/plugin-transform-block-scoping -D      # const/let 转成 var 插件</span><br></pre></td></tr></table></figure>
+
+<h4 id="Babel的预设preset"><a href="#Babel的预设preset" class="headerlink" title="Babel的预设preset"></a>Babel的预设preset</h4><blockquote>
+<p>集成了Babel常用的插件；</p>
+</blockquote>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install @babel/preset-env -D  #安装预设preset</span><br><span class="line">npm install babel-loader -D  #安装babel-loader</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">          <span class="attr">test</span>:<span class="regexp">/\.js$/</span>,</span><br><span class="line">          <span class="attr">use</span>:[<span class="string">&quot;babel-loader&quot;</span>],</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新建babel.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=&#123;</span><br><span class="line">    <span class="attr">presets</span>:[<span class="string">&quot;@babel/preset-env&quot;</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>入口文件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// // src/index.js</span></span><br><span class="line"><span class="comment">// import &quot;./components/div_cpns.js&quot;; // 模块引入;添加到依赖图中 (div_cpns.js模块没有进行导出)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// import &quot;./components/img_cpns.js&quot;; // 模块引入;添加到依赖图中 (img_cpns.js模块没有进行导出)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> message=<span class="string">&quot;hello babel&quot;</span>;</span><br><span class="line">message.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>).<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>)=&gt;</span><span class="variable language_">console</span>.<span class="title function_">log</span>(item))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打包<code>npm run build</code>，查看打包之后的main.js；(箭头函数转化为了普通函数)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;hello babel&quot;</span>.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>).<span class="title function_">map</span>((<span class="keyword">function</span>(<span class="params">l</span>)&#123;<span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(l)&#125;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h2><ul>
+<li>Loader是用于特定的模块类型进行转换；(文件解析、转换)</li>
+<li>Plugin可以用于执行更加广泛的任务，比如打包优化、资源管理、环境变量注入等；(文件解析、转换之外的所有事情);</li>
+<li><a target="_blank" rel="noopener" href="https://webpack.docschina.org/plugins/">官网</a></li>
+</ul>
+<h3 id="CleanWebpackPlugin"><a href="#CleanWebpackPlugin" class="headerlink" title="CleanWebpackPlugin"></a>CleanWebpackPlugin</h3><blockquote>
+<p>每次修改了一些配置，重新打包时，都需要手动删除dist文件夹，CleanWebpackPlugin可以自动化删除(需要配置输出目录)。</p>
+<p>Tip：5.20.0+的版本，可以直接配置output&#x3D;&#x3D;&gt;<a target="_blank" rel="noopener" href="https://webpack.docschina.org/configuration/output/#outputclean">官网</a></p>
+</blockquote>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install clean-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">CleanWebpackPlugin</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 必须要指定输出目录位置,否则不会自动清除;</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>, <span class="string">&quot;postcss-loader&quot;</span>], <span class="comment">// postcss先对css进行处理,所以写在后面(从后往前解析)</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 使用插件(必须要指定输出目录位置,否则不会自动清除)</span></span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>()],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>测试</li>
+</ul>
+<p>在之前打包的dist文件夹中，随便新建个文件，比如abc.js&#x3D;&#x3D;&gt;打包之后被清除；</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fsllala.top">Forward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fsllala.top/articles/b9f20a20.html">https://fsllala.top/articles/b9f20a20.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsllala.top" target="_blank">Forward の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/webpack/">webpack</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_64.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/articles/fa0f2f9c.html"><img class="prev-cover" src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_57.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网络安全修改</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="avatar-img"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/img@main/1656236729350avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Forward</div><div class="author-info__description">记录一些知识点🥝</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">51</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fsllala"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFWebpack"><span class="toc-number">1.</span> <span class="toc-text">什么是Webpack</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%89%93%E5%8C%85"><span class="toc-number">4.</span> <span class="toc-text">基础打包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E6%89%93%E5%8C%85"><span class="toc-number">4.1.</span> <span class="toc-text">默认打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">配置参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.3.</span> <span class="toc-text">配置文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E6%89%93%E5%8C%85"><span class="toc-number">5.</span> <span class="toc-text">进阶打包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack%E4%BE%9D%E8%B5%96%E5%9B%BE"><span class="toc-number">5.1.</span> <span class="toc-text">Webpack依赖图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loader"><span class="toc-number">5.2.</span> <span class="toc-text">loader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81loader%E4%BD%9C%E7%94%A8"><span class="toc-number">5.2.1.</span> <span class="toc-text">验证loader作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css-loader%E4%B8%8Estyle-loader"><span class="toc-number">5.2.2.</span> <span class="toc-text">css-loader与style-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loader%E9%85%8D%E7%BD%AE"><span class="toc-number">5.2.3.</span> <span class="toc-text">loader配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#less-loader"><span class="toc-number">5.2.4.</span> <span class="toc-text">less-loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PostCSS"><span class="toc-number">5.2.5.</span> <span class="toc-text">PostCSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#autoprefixer"><span class="toc-number">5.2.5.1.</span> <span class="toc-text">autoprefixer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#postcss-preset-env"><span class="toc-number">5.2.5.2.</span> <span class="toc-text">postcss-preset-env</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Webpack%E6%89%93%E5%8C%85%E5%9B%BE%E7%89%87"><span class="toc-number">5.2.6.</span> <span class="toc-text">Webpack打包图片</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#asset-module-type"><span class="toc-number">5.2.6.1.</span> <span class="toc-text">asset module type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#asset-module-type%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">5.2.6.2.</span> <span class="toc-text">asset module type的使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Babel"><span class="toc-number">5.2.7.</span> <span class="toc-text">Babel</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">5.2.7.1.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Babel%E7%9A%84%E9%A2%84%E8%AE%BEpreset"><span class="toc-number">5.2.7.2.</span> <span class="toc-text">Babel的预设preset</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Plugin"><span class="toc-number">5.3.</span> <span class="toc-text">Plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CleanWebpackPlugin"><span class="toc-number">5.3.1.</span> <span class="toc-text">CleanWebpackPlugin</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/b9f20a20.html" title="webpack"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_64.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack"/></a><div class="content"><a class="title" href="/articles/b9f20a20.html" title="webpack">webpack</a><time datetime="2024-01-03T12:15:07.000Z" title="发表于 2024-01-03 20:15:07">2024-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/fa0f2f9c.html" title="网络安全修改"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_57.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络安全修改"/></a><div class="content"><a class="title" href="/articles/fa0f2f9c.html" title="网络安全修改">网络安全修改</a><time datetime="2023-11-09T10:23:04.000Z" title="发表于 2023-11-09 18:23:04">2023-11-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/5157567c.html" title="Koa2实战"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_45.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Koa2实战"/></a><div class="content"><a class="title" href="/articles/5157567c.html" title="Koa2实战">Koa2实战</a><time datetime="2023-10-28T02:23:04.000Z" title="发表于 2023-10-28 10:23:04">2023-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/65b69107.html" title="Nginx"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_43.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nginx"/></a><div class="content"><a class="title" href="/articles/65b69107.html" title="Nginx">Nginx</a><time datetime="2023-08-24T02:00:03.000Z" title="发表于 2023-08-24 10:00:03">2023-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/3ef665a6.html" title="https"><img src= "https://cdn.chrelyonly.cf/gh/fsllala/img@main/loading.gif" data-lazy-src="https://cdn.chrelyonly.cf/gh/fsllala/default_cover@main/default_cover_40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="https"/></a><div class="content"><a class="title" href="/articles/3ef665a6.html" title="https">https</a><time datetime="2023-04-26T01:55:37.000Z" title="发表于 2023-04-26 09:55:37">2023-04-26</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Forward</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://vercel.fsllala.top/js/fancybox.umd.min.js"></script><script src="https://vercel.fsllala.top/js/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://vercel.fsllala.top/js/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/js/jquery.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script async data-pjax src="/js/txMap.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://vercel.fsllala.top/js/canvas-nest.min.js"></script><script src="https://vercel.fsllala.top/js/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://vercel.fsllala.top/js/click-heart.min.js" async="async" mobile="false"></script><script src="https://vercel.fsllala.top/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><div id="web_bg"></div>
