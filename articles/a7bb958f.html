@@ -1,0 +1,546 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>AI | Forward の Blog</title><meta name="author" content="Forward"><meta name="copyright" content="Forward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="智能体定义智能体（AI Agent）是一种能够自主行动、感知环境、 做出决策并与环境交互的计算机系统或实体，通常依赖大型语言模型作为其核心决策和处理单元，具备独立思考、 调用工具去逐步完成给定目标的能力。 架构 核心要素 大模型(LLM)：大模型作为“大脑”：提供推理、规划和知识理解能力，是AI A"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fsllala.top/articles/a7bb958f"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://netlify.fsllala.top/css/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AI',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-25 00:21:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/onePic.css"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/wind.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/cursor.css"><link rel="stylesheet" href="/css/cat.css"><link rel="stylesheet" href="/css/readPercent.css"><link rel="stylesheet" href="/css/txMap.css"><link rel="stylesheet" href="/css/avator.css"><div id="myscoll"></div><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/1656236729350avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">52</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cover.fsllala.top/default_cover_65.webp')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Forward の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">AI</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-05-23T15:23:23.000Z" title="发表于 2024-05-23 23:23:23">2024-05-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-24T16:21:05.074Z" title="更新于 2025-06-25 00:21:05">2025-06-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/AI/">AI</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="AI"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="智能体"><a href="#智能体" class="headerlink" title="智能体"></a>智能体</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>智能体（AI Agent）是一种能够自主行动、感知环境、 做出决策并与环境交互的计算机系统或实体，通常依赖大型语言模型作为其核心决策和处理单元，具备独立思考、 调用工具去逐步完成给定目标的能力。</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250622135025387.png" alt="image-20250622135025387"></p>
+<h2 id="核心要素"><a href="#核心要素" class="headerlink" title="核心要素"></a>核心要素</h2><ul>
+<li>大模型(LLM)：大模型作为“大脑”：提供推理、规划和知识理解能力，是AI Agent的决策中枢。</li>
+<li>记忆（Memory）：<ul>
+<li>短期记忆：存储单次对话周期的<strong>上下文信息</strong>，属于临时信息存储机制。受限于模型的上下文窗口长度。</li>
+<li>长期记忆：可以横跨多个任务或时间周期，可存储并调用核心知识，非即时任务。可以通过模型参数微调（固化知识）、知识图谱（结构化语义网络）或向量数据库（相似性检索）方式实现。长期记忆的主要体现为 <strong>个人知识库</strong>。</li>
+</ul>
+</li>
+<li>工具使用(Tool Use)：调用外部工具（如API、数据库）扩展能力边界。</li>
+<li>规划决策(Planning)：通过任务分解、反思与自省框架实现复杂任务处理。例如，利用思维链（Chain of Thought）将目标拆解为子任务，并通过反馈优化策略。</li>
+<li>行动(Action)：实际执行决策的模块，涵盖软件接口操作（如自动订票）和物理交互（如机器人执行搬运）。比如：检索、推理、编程等。</li>
+</ul>
+<h2 id="三个阶段"><a href="#三个阶段" class="headerlink" title="三个阶段"></a>三个阶段</h2><ol>
+<li><p>阶段1：提示词立人设：GPTs、Cherry-Studio、豆包等通过提示词，做一个阉割版的智能体，直接和LLM交互。</p>
+</li>
+<li><p>阶段2（面向过程）：工作流：定义工作流，每一步可以指定不同的模型，应用就会按照我们设定的流程执行任务。</p>
+</li>
+<li><p>阶段3：real 智能体（面相目标）：智能体根据人类设定的目标，自主进行任务拆分，工具选择，进度控制，实现目标后自主结</p>
+<p>束工作。</p>
+</li>
+</ol>
+<h1 id="RAG"><a href="#RAG" class="headerlink" title="RAG"></a>RAG</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>RAG（Retrieval-Augmented Generation，检索增强生成）是一种结合信息检索（Retrieval）与文本生成（Generation）的技术，旨在提升大语言模型在回答专业问题时的准确性和可靠性。</p>
+<h2 id="为什么需要RAG"><a href="#为什么需要RAG" class="headerlink" title="为什么需要RAG"></a>为什么需要RAG</h2><ul>
+<li>减少特定领域（陌生领域）的幻觉；</li>
+<li>数据实时问题；</li>
+<li>提升准确率；</li>
+</ul>
+<blockquote>
+<p>以下分三个场景进行举例。</p>
+</blockquote>
+<p>场景1：大型语言模型（LLM）的训练依赖于网络上海量公开的静态数据，而某些<strong>特定领域</strong>（如企业内部资料、专有技术文档等）的数据通常不会作为公开的训练数据，导致模型在面对这些领域的查询时，可能因缺乏足够的信息而生成不准确甚至虚构的回复。</p>
+<p>解决方案：为了解决这一问题，RAG技术通过引入向量数据库（Vector Database）作为外部知识源，将模型缺失的知识以结构化的形式提供（其实 个人知识库 就是RAG技术的落地的体现）。</p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250622140019312.png" alt="image-20250622140019312"></p>
+<p>场景2：随着LLM 规模扩大，训练成本与周期相应增加。因此，包含最新信息的数据难以融入模型训练过程，无法及时反映最新的信息或动态变化。导致LLM 在应对诸如“请推荐当前热门影片”等时间敏感性问题。</p>
+<p>解决方案：提供联网搜索功能。</p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250622140428124.png" alt="image-20250622140428124"></p>
+<p>场景3：LLM在考试的时候面对陌生的领域，答复能力有限，然后就准备放飞自我了（AI幻觉），而此时RAG给了一些提示和思路，让LLM懂了开始往这个提示的方向做，最终考试的正确率从60%到了90%！</p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250622140531159.png" alt="image-20250622140531159"></p>
+<h2 id="个人知识库执行流程"><a href="#个人知识库执行流程" class="headerlink" title="个人知识库执行流程"></a>个人知识库执行流程</h2><p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250622135820898.png" alt="image-20250622135820898"></p>
+<h1 id="MCP与A2A"><a href="#MCP与A2A" class="headerlink" title="MCP与A2A"></a>MCP与A2A</h1><p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250621220128989.png" alt="image-20250621220128989"></p>
+<h2 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction">官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/c-mp2sInGfsUMNBGx05pOw">漫画：什么是MCP协议？</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/QxLScpypL2a6lWBBIBBrcQ">一篇文章搞懂MCP</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/W-7rFGRZfndUzITIP0Ghjw">一文读懂AI 智能体中MCP、API与Function Call</a>*</li>
+</ul>
+<p>MCP（Model Context Protocol，模型上下文协议） ，2024年11月底，由Anthropic 推出的一种开放标准。旨在为大语言模型（LLM）提供统一的、标准化方式与外部数据源和工具之间进行通信。</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>MCP</th>
+<th>TCP&#x2F;IP、HTTPS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本质</strong></td>
+<td>协议(Protocol)</td>
+<td>协议(Protocol)</td>
+</tr>
+<tr>
+<td><strong>作用</strong></td>
+<td>标准化AI模型与上下文来源&#x2F;工具之间的数据交互方式</td>
+<td>标准化设备之间的网络通信方式</td>
+</tr>
+<tr>
+<td><strong>目标</strong></td>
+<td>让不同模型应用可以用统一方式访问资源&#x2F;工具</td>
+<td>让不同设备、系统可以互通数据</td>
+</tr>
+<tr>
+<td><strong>好处</strong></td>
+<td>消除碎片化集成、形成生态闭环</td>
+<td>解决设备互联、实现互联网基础</td>
+</tr>
+</tbody></table>
+<ul>
+<li>without MCP：这种为每个数据源构建独立连接的方式，可以被视为一个M*N问题。(M是大模型，N是插件)</li>
+<li>with MCP ：可以被视为一个M + N问题。（中间件的感觉）</li>
+</ul>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250622144908673.png" alt="image-20250622144908673"></p>
+<p>MCP 作为一种标准化协议，极大地简化了大语言模型与外部世界的交互方式，使开发者能够以统一的方式为AI 应用添加各种能力。可以将MCP理解为电脑的USB接口(一套标准)，通过这个接口电脑可以访问各种外部设备。</p>
+<p>MCP协议中的核心角色：</p>
+<ul>
+<li><strong>MCP Client</strong>：MCP client 充当LLM 和MCP server 之间的桥梁，嵌入在主机程序中。接收来自LLM的请求，将请求转发到相应的MCP server ，将MCP server 的结果返回给LLM。</li>
+</ul>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624230443433.png" alt="image-20250624230443433"></p>
+<ul>
+<li><p><strong>MCP Server</strong>：每个MCP 服务器都提供了一组特定的工具，负责从本地数据或远程服务中检索信息。是MCP 架构中的关键组件。</p>
+<p>与传统的远程API 服务器不同，MCP 服务器既可以作为本地应用程序在用户设备上运行(操作本地数据库等)，也可部署至远程服务器（调用外部接口（高德MCP等））</p>
+</li>
+</ul>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624230523452.png" alt="image-20250624230523452"></p>
+<ul>
+<li><strong>MCP Host</strong>：MCP Client通常并不是独立运行的，而是嵌入在AI模型相关的工具当中，比如Claude桌面应用、IDE(Cursor、Cline、 WindSurf)等。内嵌MCP Client的应用被称为MCP Host。协作关系如下图所示：</li>
+</ul>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250622145706022.png" alt="image-20250622145706022"></p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/mcp.webp" alt="img"></p>
+<h3 id="通信机制"><a href="#通信机制" class="headerlink" title="通信机制"></a>通信机制</h3><ul>
+<li>stdio(标准输入输出)：主要用在本地服务上，操作你本地的软件或者本地的文件。比如Blender 这种就只能用Stdio 因为他没有在线服务。<strong>（默认通信方式）</strong><ul>
+<li>优点：<ol>
+<li>这种方式适用于客户端和服务器在同一台机器上运行的场景，简单。</li>
+<li>stdio模式<strong>无需外部网络依赖</strong>，通信速度快，适合快速响应的本地应用。</li>
+<li>可靠性高，且易于调试</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>Stdio 的配置比较复杂，我们需要做些准备工作，需要提前安装需要的命令行工具。</li>
+<li>stdio模式为单进程通信，无法并行处理多个客户端请求，同时由于进程资源开销较大，不适合在本地运行大量服务。（限制了其在更复杂分布式场景中的使用）</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>SSE(Server-Sent Events)：主要用在远程通信服务上，这个服务本身就有在线的API，比如访问你的谷歌邮件，天气情况等。<ul>
+<li>优点：<ol>
+<li>适用于实时数据更新、消息推送、轻量级监控和实时日志流等场景</li>
+<li>对于分布式或远程部署的场景，基于HTTP和SSE 的传输方式则更为合适</li>
+<li>配置方式非常简单，基本上就一个链接就行，直接复制他的链接填上就行</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="stdio的本地环境安装"><a href="#stdio的本地环境安装" class="headerlink" title="stdio的本地环境安装"></a>stdio的本地环境安装</h3><blockquote>
+<p>stdio客户端与对应的服务端都在本地，所以需要本地有运行MCP服务的环境。 stdio的本地环境有两种：一种是Python 编写的服务，一种用TypeScript 编写的服务。分别对应着uvx 和npx 两种指令。</p>
+</blockquote>
+<p>stdio的本地环境安装uvx有两种安装方式：</p>
+<ul>
+<li>若已配置Python环境，可使用命令安装：<code>pip install uv</code></li>
+<li>若没配置Python环境，可在Windows下可以通过PowerShell运行命令来安装uv：<code>owershell -ExecutionPolicy ByPass -c &quot;irm https://astral.sh/uv/install.ps1 | iex”</code></li>
+<li>检查是否正常：<code>uv --version</code>、<code>uvx --help</code></li>
+</ul>
+<p>stdio的本地环境安装npx ：</p>
+<ul>
+<li>装一个node就行。</li>
+</ul>
+<h3 id="MCP-Server仓库"><a href="#MCP-Server仓库" class="headerlink" title="MCP Server仓库"></a>MCP Server仓库</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/modelcontextprotocol/servers">官方模型上下文协议（MCP）参考实现的集合，还包括社区构建的服务器和附加资源的参考</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/punkpeye/awesome-mcp-servers">Awesome MCP，一份精选的超赞模型上下文协议（MCP）服务器列表</a></li>
+<li><a target="_blank" rel="noopener" href="https://smithery.ai/">Smithery</a></li>
+<li><a target="_blank" rel="noopener" href="https://mcp.so/zh">MCP.so</a></li>
+<li><a target="_blank" rel="noopener" href="https://bailian.console.aliyun.com/?tab=mcp#/mcp-market">阿里云百炼</a></li>
+</ul>
+<h3 id="cursor中使用MCP"><a href="#cursor中使用MCP" class="headerlink" title="cursor中使用MCP"></a>cursor中使用MCP</h3><p>Cursor 中添加 MCP Server 有两种配置方式：</p>
+<ul>
+<li><p><strong>全局设置</strong>：通过 Cursor Settings -&gt; MCP Tools -&gt; Add  Custom MCP  添加全局可用的 MCP 服务。</p>
+</li>
+<li><p><strong>项目级别</strong>：在项目目录的 .cursor 目录中新建 mcp.json 文件进行配置，仅对特定项目生效。（建议）</p>
+</li>
+</ul>
+<h4 id="高德地图服务"><a href="#高德地图服务" class="headerlink" title="高德地图服务"></a>高德地图服务</h4><p>高德地图的MCP Server需要从MCP.so (<strong><a target="_blank" rel="noopener" href="https://mcp.so/zh">https://mcp.so/zh</a></strong>) 平台获取。申请高德地图的API：<a target="_blank" rel="noopener" href="https://console.amap.com/">https://console.amap.com/</a></p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624214513723.png" alt="image-20250624214513723"></p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624214545788.png" alt="image-20250624214545788"></p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624220117806.png" alt="image-20250624220117806"></p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624220207796.png" alt="image-20250624220207796"></p>
+<p>选择<strong>Agent</strong>模式，输入提示词:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.从高德地图的MCP服务中获取北京站到天安门、天安门到颐和园、颐和园到南锣鼓巷的地铁线路；2.从高德地图的MCP中获取颐和园、南锣鼓巷附件的美食信息，每处获取三家美食店铺信息，3.将一二步的信息生成一个精美的html前端展示页面，并存放在当前目录下</span><br></pre></td></tr></table></figure>
+
+<p>MCP执行过程：</p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624221542971.png" alt="image-20250624221542971"></p>
+<p>我们会注意到有很多的Called MCP Tool的调用，这个其实在MCP Server仓库中有提到的函数&#x2F;工具，所以我们需要根据提供的函数&#x2F;工具来提对应的需求。</p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624222852826.png" alt="image-20250624222852826"></p>
+<p>最终效果如下所示：</p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/mcpHtml.png" alt="22d8918a9906ca8bd4894a9643bdd8d1"></p>
+<h3 id="Function-Call、MCP、RAG"><a href="#Function-Call、MCP、RAG" class="headerlink" title="Function Call、MCP、RAG"></a>Function Call、MCP、RAG</h3><blockquote>
+<p>mcp类似于usb这样的协议 目的是统一各个工具和各家大模型之间交互的标准，rag是检索增强生成，用于从知识库向量检索到相关知识喂给大模型回答问题，让他不仅仅根据训练知识回答还要根据你自己的知识库知识回答。</p>
+<p>function Call也好，mcp也好，就是一个大模型json输出而已。大模型默认输出markdown格式文本，也可以指定输出json。fc和mcp原理是一样的 都是拼接提示词，让大模型输出一个符合要求的json，然后从json中解析函数名和参数，客户端调用函数，获得结果。区别就是fc是开发者自己定义json格式(注意是开发者定义的，不是大模型定义的)，mcp仅仅是增加了一个标准，类似于做成通用库，可以让遵循mcp的客户端都可以直接用，而无需再重复造轮子。</p>
+</blockquote>
+<h1 id="本地部署大模型"><a href="#本地部署大模型" class="headerlink" title="本地部署大模型"></a>本地部署大模型</h1><p>目标：使用 Ollama 在本地部署 DeepSeek 模型。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ollama/ollama/blob/main/docs/api.md">ollama官网</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zhangrenyang/deepseek/blob/main/deploy_zh.md">DeepSeek R1 本地部署保姆级教程</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.runningcheese.com/ollama">可能最细！Deepseek 本地部署 + 本地知识库</a></p>
+</li>
+</ul>
+<h2 id="安装ollama"><a href="#安装ollama" class="headerlink" title="安装ollama"></a>安装ollama</h2><ol>
+<li>访问 Ollama 官网：<a target="_blank" rel="noopener" href="https://ollama.com/">https://ollama.com/</a></li>
+<li>Ollama 默认会安装在 C 盘，想要安装在其它的盘，则要用命令来指定安装路径，比如 <strong>OllamaSetup.exe &#x2F;dir&#x3D;E:\Ollama</strong>，代码以安装在 <strong>E:\Ollama</strong> 为例，具体操作步骤如下</li>
+</ol>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/ollama.jpg" alt="22d8918a9906ca8bd4894a9643bdd8d1"></p>
+<ol start="3">
+<li>安装好后，接着是 <a target="_blank" rel="noopener" href="https://ollama.com/library">下载模型</a>，在 <strong>Cmd 窗口</strong> 或者 <strong>终端</strong>，输入 <strong>ollama run deepseek-r1:1.5b</strong>，Ollama 就会自动下载，这里的 <strong>1.5b</strong> 可以修改为你想下载的版本。(下载时，如果速度变慢或者卡住不动了。在窗口里按一下 <strong>Ctrl+C</strong> 取消下载，然后再次输入代码，就会重新下载，进度不会丢失)</li>
+</ol>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624235041562.png" alt="image-20250624235041562"></p>
+<h2 id="使用模型对话"><a href="#使用模型对话" class="headerlink" title="使用模型对话"></a>使用模型对话</h2><ol>
+<li>模型下载完成后会自动进入对话模式</li>
+<li>在提示符 <code>&gt;&gt;&gt;</code> 后输入问题并按回车</li>
+<li>常用命令：<ul>
+<li><code>/clear</code> - 清除上下文，重新开始对话</li>
+<li><code>/bye</code> - 退出对话模式</li>
+<li>直接输入问题 - 开始对话</li>
+</ul>
+</li>
+</ol>
+<h2 id="日常使用说明"><a href="#日常使用说明" class="headerlink" title="日常使用说明"></a>日常使用说明</h2><h3 id="启动模型"><a href="#启动模型" class="headerlink" title="启动模型"></a>启动模型</h3><ol>
+<li>按 Win+R 打开运行</li>
+<li>输入 cmd 打开命令提示符</li>
+<li>输入启动命令：<code>ollama run 模型名称</code> 例如：<code>ollama run deepseek-r1:1.5b</code></li>
+</ol>
+<h3 id="模型管理命令"><a href="#模型管理命令" class="headerlink" title="模型管理命令"></a>模型管理命令</h3><ul>
+<li>查看已安装模型：<code>ollama list</code></li>
+<li>删除模型：<code>ollama rm 模型名称</code> 例如：<code>ollama rm deepseek-r1:1.5b</code></li>
+<li>查看所有命令：直接输入 <code>ollama</code></li>
+</ul>
+<h2 id="通过-API-接口访问模型"><a href="#通过-API-接口访问模型" class="headerlink" title="通过 API 接口访问模型"></a>通过 API 接口访问模型</h2><ol>
+<li><p>API 基本信息</p>
+<ul>
+<li>默认 API 地址：<code>http://localhost:11434/api</code></li>
+<li>支持的请求方式：POST</li>
+<li>数据格式：JSON</li>
+</ul>
+</li>
+<li><p>主要 API 接口</p>
+<ul>
+<li>生成回答（Generate）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://localhost:11434/api/generate -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">  &quot;model&quot;: &quot;deepseek-r1:1.5b&quot;,</span></span><br><span class="line"><span class="string">  &quot;prompt&quot;: &quot;你好，请介绍一下自己&quot;,</span></span><br><span class="line"><span class="string">  &quot;stream&quot;: false</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>聊天对话（Chat）</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://localhost:11434/api/chat -d <span class="string">&#x27;&#123;</span></span><br><span class="line"><span class="string">  &quot;model&quot;: &quot;deepseek-r1:1.5b&quot;,</span></span><br><span class="line"><span class="string">  &quot;messages&quot;: [</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">      &quot;role&quot;: &quot;user&quot;,</span></span><br><span class="line"><span class="string">      &quot;content&quot;: &quot;你好，请介绍一下自己&quot;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  ],</span></span><br><span class="line"><span class="string">  &quot;stream&quot;: false</span></span><br><span class="line"><span class="string">&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JavaScript 示例代码</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">chatWithModel</span>(<span class="params">prompt</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">&quot;http://localhost:11434/api/chat&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> data = &#123;</span><br><span class="line">    <span class="attr">model</span>: <span class="string">&quot;deepseek-r1:1.5b&quot;</span>,</span><br><span class="line">    <span class="attr">messages</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">role</span>: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">        <span class="attr">content</span>: prompt,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">stream</span>: <span class="literal">false</span>,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(url, &#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">      <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">body</span>: <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data),</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> response.<span class="title function_">json</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="title function_">chatWithModel</span>(<span class="string">&quot;你好，请介绍一下自己&quot;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(response.<span class="property">message</span>.<span class="property">content</span>))</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Error:&quot;</span>, error));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意事项<ol>
+<li>确保 Ollama 服务正在运行</li>
+<li>API 默认只监听本地请求（localhost）</li>
+<li>如需远程访问，需要配置 Ollama 允许远程连接</li>
+<li>建议在生产环境中添加适当的安全措施</li>
+<li>stream 参数设置为 true 时可获得流式响应</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>硬件要求：<ul>
+<li>1.5b 版本：最低 8GB 内存</li>
+<li>7b 版本：建议 16GB 以上内存</li>
+<li>14b 版本：建议 32GB 以上内存</li>
+</ul>
+</li>
+<li>存储空间：<ul>
+<li>请确保有足够的硬盘空间（模型文件较大）</li>
+<li>1.5b 约需 3GB</li>
+<li>7b 约需 15GB</li>
+<li>14b 约需 30GB</li>
+</ul>
+</li>
+<li>使用建议：<ul>
+<li>首次使用建议从小模型开始尝试</li>
+<li>确保网络稳定，避免下载中断</li>
+<li>使用时保持电脑有足够的可用内存</li>
+</ul>
+</li>
+</ol>
+<h2 id="改变安装位置"><a href="#改变安装位置" class="headerlink" title="改变安装位置"></a>改变安装位置</h2><p>需要注意的是，<strong>Ollama</strong> 存储模型的位置也是在 C 盘，你可以在 <strong>Cmd 窗口</strong>输入下面这条代码来修改，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setx OLLAMA_MODELS &quot;E:\Ollama\.ollama\models&quot;</span><br></pre></td></tr></table></figure>
+
+<p>特别需要注意的是，设置好后，一定要退出 Ollama，<strong>重启一下 Ollama 才会生效</strong>。接着，在命令行里输入 <strong>ollama list</strong>，即可查看已下载的模型。</p>
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624234420820.png" alt="image-20250624234420820"></p>
+<p>最后，你还可以将之前下载过的模型，移动到新的目录来，比如我安装在了 <strong>E:\Ollama</strong>，只需要将默认位置的整个 <strong>.ollama</strong> 文件夹，复制过来即可。这也是之前把模型储存位置修改为 <strong>E:\Ollama.ollama\models</strong> 的原因，直接一<strong>键复制即可</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#默认安装位置：</span><br><span class="line">macOS: ~/.ollama/models</span><br><span class="line">Windows: C:\Users\%username%\.ollama\models</span><br></pre></td></tr></table></figure>
+
+<p><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/image-20250624234502419.png" alt="image-20250624234502419"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://fsllala.top">Forward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://fsllala.top/articles/a7bb958f.html">https://fsllala.top/articles/a7bb958f.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://fsllala.top" target="_blank">Forward の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a></div><div class="post_share"><div class="social-share" data-image="https://cover.fsllala.top/default_cover_65.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/articles/b9f20a20.html"><img class="prev-cover" src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://cover.fsllala.top/default_cover_64.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">webpack</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="avatar-img"><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://img.fsllala.top/1656236729350avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Forward</div><div class="author-info__description">记录一些知识点🥝</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">52</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/fsllala"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/fsllala" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://gitee.com/fsllala" target="_blank" title="Gitee"><i class="fa-brands fa-git-square"></i></a><a class="social-icon" href="mailto:1779318132@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E4%BD%93"><span class="toc-number">1.</span> <span class="toc-text">智能体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%A6%81%E7%B4%A0"><span class="toc-number">1.3.</span> <span class="toc-text">核心要素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-number">1.4.</span> <span class="toc-text">三个阶段</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RAG"><span class="toc-number">2.</span> <span class="toc-text">RAG</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-number">2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81RAG"><span class="toc-number">2.2.</span> <span class="toc-text">为什么需要RAG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.3.</span> <span class="toc-text">个人知识库执行流程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MCP%E4%B8%8EA2A"><span class="toc-number">3.</span> <span class="toc-text">MCP与A2A</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MCP"><span class="toc-number">3.1.</span> <span class="toc-text">MCP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">3.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6"><span class="toc-number">3.1.2.</span> <span class="toc-text">通信机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stdio%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">3.1.3.</span> <span class="toc-text">stdio的本地环境安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCP-Server%E4%BB%93%E5%BA%93"><span class="toc-number">3.1.4.</span> <span class="toc-text">MCP Server仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cursor%E4%B8%AD%E4%BD%BF%E7%94%A8MCP"><span class="toc-number">3.1.5.</span> <span class="toc-text">cursor中使用MCP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.1.5.1.</span> <span class="toc-text">高德地图服务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function-Call%E3%80%81MCP%E3%80%81RAG"><span class="toc-number">3.1.6.</span> <span class="toc-text">Function Call、MCP、RAG</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E5%A4%A7%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.</span> <span class="toc-text">本地部署大模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">4.1.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85ollama"><span class="toc-number">4.2.</span> <span class="toc-text">安装ollama</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%9E%8B%E5%AF%B9%E8%AF%9D"><span class="toc-number">4.3.</span> <span class="toc-text">使用模型对话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="toc-number">4.4.</span> <span class="toc-text">日常使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.4.1.</span> <span class="toc-text">启动模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">4.4.2.</span> <span class="toc-text">模型管理命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87-API-%E6%8E%A5%E5%8F%A3%E8%AE%BF%E9%97%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.5.</span> <span class="toc-text">通过 API 接口访问模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.6.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE"><span class="toc-number">4.7.</span> <span class="toc-text">改变安装位置</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/articles/a7bb958f.html" title="AI"><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://cover.fsllala.top/default_cover_65.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AI"/></a><div class="content"><a class="title" href="/articles/a7bb958f.html" title="AI">AI</a><time datetime="2024-05-23T15:23:23.000Z" title="发表于 2024-05-23 23:23:23">2024-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/b9f20a20.html" title="webpack"><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://cover.fsllala.top/default_cover_64.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webpack"/></a><div class="content"><a class="title" href="/articles/b9f20a20.html" title="webpack">webpack</a><time datetime="2024-01-03T12:15:07.000Z" title="发表于 2024-01-03 20:15:07">2024-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/fa0f2f9c.html" title="网络安全修改"><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://cover.fsllala.top/default_cover_57.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络安全修改"/></a><div class="content"><a class="title" href="/articles/fa0f2f9c.html" title="网络安全修改">网络安全修改</a><time datetime="2023-11-09T10:23:04.000Z" title="发表于 2023-11-09 18:23:04">2023-11-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/5157567c.html" title="Koa2实战"><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://cover.fsllala.top/default_cover_45.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Koa2实战"/></a><div class="content"><a class="title" href="/articles/5157567c.html" title="Koa2实战">Koa2实战</a><time datetime="2023-10-28T02:23:04.000Z" title="发表于 2023-10-28 10:23:04">2023-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/articles/65b69107.html" title="Nginx"><img src= "https://img.fsllala.top/loading.gif" data-lazy-src="https://cover.fsllala.top/default_cover_43.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nginx"/></a><div class="content"><a class="title" href="/articles/65b69107.html" title="Nginx">Nginx</a><time datetime="2023-08-24T02:00:03.000Z" title="发表于 2023-08-24 10:00:03">2023-08-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Forward</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i><span id="percent">0</span></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://netlify.fsllala.top/js/fancybox.umd.min.js"></script><script src="https://netlify.fsllala.top/js/lazyload.iife.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://netlify.fsllala.top/js/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.fsllala.top',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="/js/jquery.min.js"></script><canvas id="universe"></canvas><script defer src="/js/universe.js"></script><script defer src="/js/cursor.js"></script><script defer data-pjax src="/js/cat.js"></script><script defer data-pjax src="/js/readPercent.js"></script><script async data-pjax src="/js/txMap.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://netlify.fsllala.top/js/canvas-nest.min.js"></script><script src="https://netlify.fsllala.top/js/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://netlify.fsllala.top/js/click-heart.min.js" async="async" mobile="false"></script><script src="https://netlify.fsllala.top/js/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><div id="web_bg"></div>
